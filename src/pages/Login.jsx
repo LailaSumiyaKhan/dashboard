@@ -1,4 +1,4 @@
-import { Button, Container, TextField, Typography } from "@mui/material";
+import { Button, Container, TextField, Typography, Box } from "@mui/material";
 import React from "react";
 import { colors } from "../colors";
 
@@ -7,34 +7,43 @@ export default function Login() {
     <Container
       maxWidth="xs"
       sx={{
-        height: "50vh",
+        height: "97vh",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignContent: "center",
-        alignSelf: "center",
-        borderRadius: 2,
-        bgcolor: colors.aliceBlue,
       }}
     >
-      <Typography
+      <Box
         sx={{
-          fontWeight: "bold",
-          color: colors.royalBlue,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          bgcolor: colors.aliceBlue,
+          p: 5,
+          borderRadius: 3,
         }}
-        variant="h4"
       >
-        Sign in
-      </Typography>
+        <Typography
+          sx={{
+            fontWeight: "bold",
+            color: colors.royalBlue,
+          }}
+          gutterBottom
+          variant="h4"
+        >
+          Sign in
+        </Typography>
 
-      <TextField label="Username" variant="standard" />
-      <TextField label="Password" variant="standard" type="password" />
-      <Button
-        variant="contained"
-        sx={{ textTransform: "none", fontWeight: "bold", mt: 5 }}
-      >
-        Sign in
-      </Button>
+        <TextField label="Username" variant="standard" />
+        <TextField label="Password" variant="standard" type="password" />
+        <Button
+          variant="contained"
+          sx={{ textTransform: "none", fontWeight: "bold", mt: 5 }}
+        >
+          Sign in
+        </Button>
+      </Box>
     </Container>
   );
 }
