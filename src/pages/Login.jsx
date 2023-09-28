@@ -11,7 +11,7 @@ import {
    Input,
 } from "@mui/material";
 import React, { useState } from "react";
-import { colors } from "../colors";
+import { colors } from "../utils";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useNavigate } from "react-router";
 import { setState } from "../appSlice";
@@ -46,8 +46,9 @@ export default function Login() {
 
    const handleSignIn = () => {
       if (username === testUsername && password === testPass) {
-         setState("username", username);
-         setState("password", password);
+         dispatch(setState("username", username));
+         dispatch(setState("password", password));
+         dispatch(setState("isAuth", true));
          navigate("/");
       } else {
          alert("Wrong username or password");
