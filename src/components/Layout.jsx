@@ -16,8 +16,6 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 import { Outlet, useNavigate } from "react-router";
 import HomeIcon from "@mui/icons-material/Home";
 import TuneIcon from "@mui/icons-material/Tune";
@@ -26,6 +24,8 @@ import BarChartIcon from "@mui/icons-material/BarChart";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 import { NavLink } from "react-router-dom";
 import { Button } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { setState } from "../appSlice";
 
 const drawerWidth = 240;
 
@@ -106,6 +106,7 @@ export default function Layout() {
    const theme = useTheme();
    const [open, setOpen] = React.useState(false);
    const navigate = useNavigate();
+   const dispatch = useDispatch();
 
    const handleDrawerOpen = () => {
       setOpen(true);
@@ -116,7 +117,8 @@ export default function Layout() {
    };
 
    function logout() {
-      localStorage.clear();
+      dispatch(setState("username", ""));
+      dispatch(setState("password", ""));
       navigate("/login");
    }
 

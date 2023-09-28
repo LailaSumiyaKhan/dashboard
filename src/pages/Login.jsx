@@ -14,13 +14,16 @@ import React, { useState } from "react";
 import { colors } from "../colors";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useNavigate } from "react-router";
+import { setState } from "../appSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const testUsername = "admin";
 const testPass = "admin";
 
 export default function Login() {
-   const [username, setUsername] = useState("");
-   const [password, setPassword] = useState("");
+   const appState = useSelector((store) => store.app);
+   const dispatch = useDispatch();
+   const { username, password } = appState;
    const [showPassword, setShowPassword] = useState(false);
 
    const navigate = useNavigate();
@@ -31,9 +34,20 @@ export default function Login() {
       event.preventDefault();
    };
 
+   function setUsername(event) {
+      const value = event.target.value;
+      dispatch(setState("username", value));
+   }
+
+   function setPassword(event) {
+      const value = event.target.value;
+      dispatch(setState("password", value));
+   }
+
    const handleSignIn = () => {
       if (username === testUsername && password === testPass) {
-         localStorage.setItem("username", username);
+         setState("username", username);
+         setState("password", password);
          navigate("/");
       } else {
          alert("Wrong username or password");
@@ -75,7 +89,7 @@ export default function Login() {
                label="Username"
                variant="standard"
                value={username}
-               onChange={(e) => setUsername(e.target.value)}
+               onChange={setUsername}
             />
             <FormControl variant="standard">
                <InputLabel htmlFor="standard-adornment-password">
@@ -96,7 +110,7 @@ export default function Login() {
                      </InputAdornment>
                   }
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={setPassword}
                />
             </FormControl>
             <Button
