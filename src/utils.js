@@ -23,7 +23,11 @@ export const colors = {
    bubblegumPink: '#EA738D',
    beige: '#DDC3A5',
    tan: '#E0A96D',
-   aliceBlue: '#F0F8FF'
+   aliceBlue: '#F0F8FF',
+   black: '#040D12',
+   muiBlue: '#1976d2',
+   colomBiaBlue: '#B9D9EB',
+   lightSkyBlue: '#87CEFA'
 }
 
 //https://webflow.com/blog/best-color-combinations

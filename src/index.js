@@ -5,6 +5,7 @@ import { ThemeProvider } from "@emotion/react";
 import { theme } from "./theme";
 import { Provider } from "react-redux";
 import store from "./store";
+import "./index.css";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 

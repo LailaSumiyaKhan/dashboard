@@ -26,6 +26,7 @@ import { NavLink } from "react-router-dom";
 import { Button } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { setState } from "../appSlice";
+import { colors } from "../utils";
 
 const drawerWidth = 240;
 
@@ -119,6 +120,7 @@ export default function Layout() {
    function logout() {
       dispatch(setState("username", ""));
       dispatch(setState("password", ""));
+      dispatch(setState("isAuth", false));
       navigate("/login");
    }
 
@@ -174,14 +176,31 @@ export default function Layout() {
             <Divider />
             <List>
                {menuItems.map((item, index) => (
-                  <ListItem key={index} disablePadding>
-                     <NavLink to={item.route}>
+                  <NavLink to={item.route} key={index}>
+                     <ListItem
+                        disablePadding
+                        sx={{
+                           "&:hover": {
+                              bgcolor: colors.aliceBlue,
+                           },
+                        }}
+                     >
                         <ListItemButton>
                            <ListItemIcon>{item.icon}</ListItemIcon>
-                           <ListItemText primary={item.name} />
+                           <ListItemText
+                              primary={
+                                 <Typography
+                                    sx={{
+                                       fontWeight: "bold",
+                                    }}
+                                 >
+                                    {item.name}
+                                 </Typography>
+                              }
+                           />
                         </ListItemButton>
-                     </NavLink>
-                  </ListItem>
+                     </ListItem>
+                  </NavLink>
                ))}
             </List>
             <Divider />
