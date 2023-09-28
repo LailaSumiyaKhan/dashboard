@@ -33,7 +33,8 @@ export default function Login() {
 
    const handleSignIn = () => {
       if (username === testUsername && password === testPass) {
-         navigate("/home");
+         localStorage.setItem("username", username);
+         navigate("/");
       } else {
          alert("Wrong username or password");
       }
