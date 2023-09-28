@@ -18,13 +18,14 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
-import { Outlet } from "react-router";
+import { Outlet, useNavigate } from "react-router";
 import HomeIcon from "@mui/icons-material/Home";
 import TuneIcon from "@mui/icons-material/Tune";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 import { NavLink } from "react-router-dom";
+import { Button } from "@mui/material";
 
 const drawerWidth = 240;
 
@@ -104,6 +105,7 @@ const menuItems = [
 export default function Layout() {
    const theme = useTheme();
    const [open, setOpen] = React.useState(false);
+   const navigate = useNavigate();
 
    const handleDrawerOpen = () => {
       setOpen(true);
@@ -112,6 +114,11 @@ export default function Layout() {
    const handleDrawerClose = () => {
       setOpen(false);
    };
+
+   function logout() {
+      localStorage.clear();
+      navigate("/login");
+   }
 
    return (
       <Box sx={{ display: "flex" }}>
@@ -176,6 +183,19 @@ export default function Layout() {
                ))}
             </List>
             <Divider />
+            <Button
+               sx={{
+                  mt: 3,
+                  textTransform: "none",
+                  fontWeight: "bold",
+                  m: 2,
+               }}
+               variant="contained"
+               onClick={logout}
+            >
+               {" "}
+               Logout{" "}
+            </Button>
          </Drawer>
       </Box>
    );
