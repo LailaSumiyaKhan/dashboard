@@ -19,6 +19,12 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import { Outlet } from "react-router";
+import HomeIcon from "@mui/icons-material/Home";
+import TuneIcon from "@mui/icons-material/Tune";
+import EditNoteIcon from "@mui/icons-material/EditNote";
+import BarChartIcon from "@mui/icons-material/BarChart";
+import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
+import { NavLink } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -68,10 +74,31 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 const menuItems = [
-   "Dashboard Home",
-   "Analytics",
-   "Data Management",
-   "Settings",
+   {
+      name: "Home",
+      icon: <HomeIcon />,
+      route: "/",
+   },
+   {
+      name: "Setup",
+      icon: <TuneIcon />,
+      route: "/setup",
+   },
+   {
+      name: "Define",
+      icon: <EditNoteIcon />,
+      route: "/define",
+   },
+   {
+      name: "Analyze",
+      icon: <BarChartIcon />,
+      route: "/analyze",
+   },
+   {
+      name: "Admin",
+      icon: <AdminPanelSettingsIcon />,
+      route: "/admin",
+   },
 ];
 
 export default function Layout() {
@@ -137,14 +164,14 @@ export default function Layout() {
             </DrawerHeader>
             <Divider />
             <List>
-               {menuItems.map((text, index) => (
-                  <ListItem key={text} disablePadding>
-                     <ListItemButton>
-                        <ListItemIcon>
-                           {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                        </ListItemIcon>
-                        <ListItemText primary={text} />
-                     </ListItemButton>
+               {menuItems.map((item, index) => (
+                  <ListItem key={index} disablePadding>
+                     <NavLink to={item.route}>
+                        <ListItemButton>
+                           <ListItemIcon>{item.icon}</ListItemIcon>
+                           <ListItemText primary={item.name} />
+                        </ListItemButton>
+                     </NavLink>
                   </ListItem>
                ))}
             </List>
