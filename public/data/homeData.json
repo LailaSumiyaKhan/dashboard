@@ -1,0 +1,81 @@
+{
+   "totalSales": {
+      "today": 7500,
+      "lastWeek": 6800,
+      "lastMonth": 29500
+   },
+   "totalOrders": {
+      "today": 45,
+      "lastWeek": 38,
+      "lastMonth": 160
+   },
+   "inventoryStatus": {
+      "totalProducts": 320,
+      "lowStockAlerts": [
+         {
+            "productName": "Men's Classic T-Shirt",
+            "currentStock": 12
+         },
+         {
+            "productName": "Women's V-Neck T-Shirt",
+            "currentStock": 8
+         }
+      ]
+   },
+   "revenueBreakdown": [
+      {
+         "category": "Men's",
+         "revenue": 3500
+      },
+      {
+         "category": "Women's",
+         "revenue": 2800
+      },
+      {
+         "category": "Children's",
+         "revenue": 1200
+      }
+   ],
+   "conversionRate": {
+      "today": 3.2,
+      "lastWeek": 3.6,
+      "lastMonth": 3.0
+   },
+   "topSellingProducts": [
+      {
+         "productName": "Men's Classic T-Shirt",
+         "unitsSold": 25,
+         "price": 20
+      },
+      {
+         "productName": "Women's V-Neck T-Shirt",
+         "unitsSold": 20,
+         "price": 18
+      },
+      {
+         "productName": "Children's Cartoon T-Shirt",
+         "unitsSold": 15,
+         "price": 15
+      }
+   ],
+   "averageOrderValue": {
+      "today": 167.5,
+      "lastWeek": 178.95,
+      "lastMonth": 172.5
+   },
+   "newCustomers": {
+      "today": 8,
+      "lastWeek": 12,
+      "lastMonth": 35
+   },
+   "customerRetentionRate": {
+      "today": 62.5,
+      "lastWeek": 60.8,
+      "lastMonth": 65.2
+   },
+   "websiteTraffic": {
+      "today": 1200,
+      "lastWeek": 1050,
+      "lastMonth": 4500
+   }
+}

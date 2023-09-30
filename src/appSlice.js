@@ -1,10 +1,24 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { urls } from "./utils";
 
 const initialState = {
+   isLoading: false,
    username: "",
    password: "",
    isAuth: true,
+   homeData: null,
 }
+
+export const getHomeData = createAsyncThunk(
+   "home/getHomeData",
+   async (obj, thunkAPI) => {
+      // Fake delay
+      await new Promise((resolve) => setTimeout(resolve, 700));
+      const response = await fetch(urls.homeData);
+      const data = await response.json();
+      return data;
+   }
+);
 
 export const appSlice = createSlice({
    name: "app",
@@ -22,8 +36,19 @@ export const appSlice = createSlice({
          }
       }
    },
-   extraReducers: {
-
+   extraReducers: (builder) => {
+      builder
+         .addCase(getHomeData.pending, (state, action) => {
+            state.isLoading = true;
+         })
+         .addCase(getHomeData.fulfilled, (state, action) => {
+            state.homeData = action.payload;
+            state.isLoading = false;
+         })
+         .addCase(getHomeData.rejected, (state, action) => {
+            state.isLoading = false;
+            console.log(action.error.message);
+         })
    }
 });
 

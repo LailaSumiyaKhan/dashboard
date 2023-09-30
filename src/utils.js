@@ -30,4 +30,8 @@ export const colors = {
    lightSkyBlue: '#87CEFA'
 }
 
+export const urls = {
+   homeData: "data/homeData.json",
+}
+
 //https://webflow.com/blog/best-color-combinations
