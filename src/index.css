@@ -3,6 +3,6 @@ a {
    color: black;
 }
 a.active > li {
-   background-color: aliceblue;
+   background-color: #b3e5fc;
    border-radius: 2px;
 }
