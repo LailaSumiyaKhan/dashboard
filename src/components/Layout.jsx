@@ -19,9 +19,12 @@ import ListItemText from "@mui/material/ListItemText";
 import { Outlet, useNavigate } from "react-router";
 import HomeIcon from "@mui/icons-material/Home";
 import TuneIcon from "@mui/icons-material/Tune";
+import InventoryIcon from "@mui/icons-material/Inventory";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import BarChartIcon from "@mui/icons-material/BarChart";
-import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
+import PermIdentityIcon from "@mui/icons-material/PermIdentity";
+import SettingsIcon from "@mui/icons-material/Settings";
 import { NavLink } from "react-router-dom";
 import { Button } from "@mui/material";
 import { useDispatch } from "react-redux";
@@ -82,24 +85,29 @@ const menuItems = [
       route: "/",
    },
    {
-      name: "Setup",
-      icon: <TuneIcon />,
-      route: "/setup",
+      name: "Inventory",
+      icon: <InventoryIcon />,
+      route: "/inventory",
    },
    {
-      name: "Define",
-      icon: <EditNoteIcon />,
-      route: "/define",
+      name: "Orders",
+      icon: <ShoppingCartIcon />,
+      route: "/orders",
    },
    {
-      name: "Analyze",
+      name: "Analytics",
       icon: <BarChartIcon />,
-      route: "/analyze",
+      route: "/analytics",
    },
    {
-      name: "Admin",
-      icon: <AdminPanelSettingsIcon />,
-      route: "/admin",
+      name: "Customers",
+      icon: <PermIdentityIcon />,
+      route: "/customers",
+   },
+   {
+      name: "Settings",
+      icon: <SettingsIcon />,
+      route: "/settings",
    },
 ];
 

@@ -1,10 +1,11 @@
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import Setup from "./pages/Setup";
-import Define from "./pages/Define";
-import Analyze from "./pages/Analyze";
-import Admin from "./pages/Admin";
+import Inventory from "./pages/Inventory";
+import Orders from "./pages/Orders";
+import Analytics from "./pages/Analytics";
+import Customers from "./pages/Customers";
+import Settings from "./pages/Settings";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -16,10 +17,11 @@ function App() {
             <Route path="/login" element={<Login />}></Route>
             <Route path="/" element={<Layout />}>
                <Route index={true} element={<ProtectedRoute> <Home /> </ProtectedRoute>}></Route>
-               <Route path="/setup" element={<ProtectedRoute> <Setup /> </ProtectedRoute>}></Route>
-               <Route path="/define" element={<ProtectedRoute> <Define />  </ProtectedRoute>}></Route>
-               <Route path="/analyze" element={<ProtectedRoute> <Analyze /> </ProtectedRoute>}></Route>
-               <Route path="/admin" element={<ProtectedRoute> <Admin /> </ProtectedRoute>}></Route>
+               <Route path="/inventory" element={<ProtectedRoute> <Inventory /> </ProtectedRoute>}></Route>
+               <Route path="/orders" element={<ProtectedRoute> <Orders />  </ProtectedRoute>}></Route>
+               <Route path="/analytics" element={<ProtectedRoute> <Analytics /> </ProtectedRoute>}></Route>
+               <Route path="/customers" element={<ProtectedRoute> <Customers /> </ProtectedRoute>}></Route>
+               <Route path="/settings" element={<ProtectedRoute> <Settings /> </ProtectedRoute>}></Route>
             </Route>
          </Routes>
       </BrowserRouter>
