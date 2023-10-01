@@ -5,20 +5,24 @@ import { getHomeData } from "../../appSlice";
 import LoadingScreen from "../../components/LoadingScreen";
 import { Box } from "@mui/material";
 import Sales from "./Sales";
+import Orders from "./Orders";
+import InventoryStatus from "./InventoryStatus";
 
 export default function Home() {
-   const dispatch = useDispatch();
    const homeData = useSelector((store) => store.app.homeData);
-   const { totalSales } = homeData
+   const dispatch = useDispatch();
    useEffect(() => {
-      dispatch(getHomeData());
+      if (homeData === null) {
+         dispatch(getHomeData());
+      }
    }, []);
-   console.log("home rendering");
    return (
       <>
          <LoadingScreen />
-         <Box>
+         <Box sx={{ display: "flex", flexDirection: "row" }}>
             <Sales />
+            <Orders />
+            <InventoryStatus />
          </Box>
       </>
    );

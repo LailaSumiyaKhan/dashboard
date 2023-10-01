@@ -4,13 +4,13 @@ import { useSelector } from "react-redux";
 import Card from "../../components/Card";
 import LoadingScreen from "../../components/LoadingScreen";
 
-export default function Sales() {
+export default function Orders() {
    const homeData = useSelector((store) => store.app.homeData);
    if (homeData === null) {
       return <LoadingScreen />;
    }
 
-   const { today, lastWeek, lastMonth } = homeData.totalSales;
+   const { today, lastWeek, lastMonth } = homeData.totalOrders;
    return (
       <Paper
          elevation={2}
@@ -18,7 +18,7 @@ export default function Sales() {
       >
          {" "}
          <Typography variant="h5" gutterBottom sx={{ fontWeight: "bold" }}>
-            Sales
+            Orders
          </Typography>{" "}
          <Box
             sx={{
@@ -27,9 +27,9 @@ export default function Sales() {
                justifyContent: "space-evenly",
             }}
          >
-            <Card number={today} label={"Today"} isCurrency={true} />
-            <Card number={lastWeek} label={"Last Week"} isCurrency={true} />
-            <Card number={lastMonth} label={"Last Month"} isCurrency={true} />
+            <Card number={today} label={"Today"} isCurrency={false} />
+            <Card number={lastWeek} label={"Last Week"} isCurrency={false} />
+            <Card number={lastMonth} label={"Last Month"} isCurrency={false} />
          </Box>
       </Paper>
    );
