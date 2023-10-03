@@ -1,8 +1,9 @@
-import { Box, Paper, Typography } from "@mui/material";
+import { Box, Divider, Paper, Typography } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
 import Card from "../../components/Card";
 import LoadingScreen from "../../components/LoadingScreen";
+import LowStockProduct from "../../components/LowStockProduct";
 
 export default function InventoryStatus() {
    const homeData = useSelector((store) => store.app.homeData);
@@ -11,6 +12,10 @@ export default function InventoryStatus() {
    }
 
    const { totalProducts, lowStockAlerts } = homeData.inventoryStatus;
+   const minimumStockProduct = lowStockAlerts.reduce((min, product) => {
+      return product.currentStock < min.currentStock ? product : min;
+   }, lowStockAlerts[0]);
+
    return (
       <Paper
          elevation={2}
@@ -28,6 +33,8 @@ export default function InventoryStatus() {
             }}
          >
             <Card number={totalProducts} label={"Total"} isCurrency={false} />
+            <Divider sx={{ mt: 1, mb: 1 }} />
+            <LowStockProduct minimumStockProduct={minimumStockProduct} />
          </Box>
       </Paper>
    );
