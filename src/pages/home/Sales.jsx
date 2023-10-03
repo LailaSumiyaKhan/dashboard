@@ -1,4 +1,4 @@
-import { Box, Paper, Typography } from "@mui/material";
+import { Box, Divider, Paper, Typography } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
 import Card from "../../components/Card";
@@ -28,6 +28,7 @@ export default function Sales() {
             }}
          >
             <Card number={today} label={"Today"} isCurrency={true} />
+            <Divider />
             <Card number={lastWeek} label={"Last Week"} isCurrency={true} />
             <Card number={lastMonth} label={"Last Month"} isCurrency={true} />
          </Box>
