@@ -8,6 +8,7 @@ import Sales from "./Sales";
 import Orders from "./Orders";
 import InventoryStatus from "./InventoryStatus";
 import ConversionRate from "./ConversionRate";
+import RevenueBreakdown from "./RevenueBreakdown";
 
 export default function Home() {
    const homeData = useSelector((store) => store.app.homeData);
@@ -32,6 +33,7 @@ export default function Home() {
             <InventoryStatus />
             <ConversionRate />
          </Box>
+         <RevenueBreakdown />
       </>
    );
 }

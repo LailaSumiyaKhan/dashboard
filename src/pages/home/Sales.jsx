@@ -14,7 +14,7 @@ export default function Sales() {
    return (
       <Paper
          elevation={2}
-         sx={{ m: 1, p: 1, borderRadius: 2, textAlign: "center", width: 300 }}
+         sx={{ p: 1, borderRadius: 2, textAlign: "center", width: 300 }}
       >
          {" "}
          <Typography variant="h5" gutterBottom sx={{ fontWeight: "bold" }}>
