@@ -34,6 +34,18 @@
       {
          "category": "Children's",
          "revenue": 1200
+      },
+      {
+         "category": "Sports",
+         "revenue": 2200
+      },
+      {
+         "category": "Graphic",
+         "revenue": 1900
+      },
+      {
+         "category": "Accessories",
+         "revenue": 800
       }
    ],
    "conversionRate": {
