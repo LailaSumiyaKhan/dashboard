@@ -14,7 +14,7 @@ export default function ConversionRate() {
    return (
       <Paper
          elevation={2}
-         sx={{ p: 1, borderRadius: 2, textAlign: "center", width: 300 }}
+         sx={{ p: 1, borderRadius: 2, textAlign: "center", width: 290 }}
       >
          {" "}
          <Typography variant="h5" gutterBottom sx={{ fontWeight: "bold" }}>

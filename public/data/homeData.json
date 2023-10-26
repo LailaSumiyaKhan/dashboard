@@ -42,10 +42,6 @@
       {
          "category": "Graphic",
          "revenue": 1900
-      },
-      {
-         "category": "Accessories",
-         "revenue": 800
       }
    ],
    "conversionRate": {

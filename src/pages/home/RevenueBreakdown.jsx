@@ -1,16 +1,32 @@
 import { Box, Paper, Typography } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
-import {
-   BarChart,
-   Bar,
-   XAxis,
-   YAxis,
-   CartesianGrid,
-   Tooltip,
-   Legend,
-} from "recharts";
 import LoadingScreen from "../../components/LoadingScreen";
+import { Chart } from "react-google-charts";
+
+function prepareData(data) {
+   let preparedDate = [];
+   const first = [
+      "Element",
+      "revenue",
+      { role: "style" },
+      {
+         sourceColumn: 0,
+         role: "annotation",
+         type: "string",
+         calc: "stringify",
+      },
+   ];
+   preparedDate.push(first);
+
+   const color = "#1e90ff";
+   for (let i = 0; i < data.length; ++i) {
+      const item = data[i];
+      const preparedItem = [item.category, item.revenue, color, null];
+      preparedDate.push(preparedItem);
+   }
+   return preparedDate;
+}
 
 export default function RevenueBreakdown() {
    const homeData = useSelector((store) => store.app.homeData);
@@ -18,68 +34,34 @@ export default function RevenueBreakdown() {
       return <LoadingScreen />;
    }
 
-   const revenueBreakdown = homeData.revenueBreakdown;
+   const revenueBreakdown = prepareData(homeData.revenueBreakdown);
+   console.log(revenueBreakdown);
 
-   const data = [
-      {
-         category: revenueBreakdown[0].category,
-         revenue: revenueBreakdown[0].revenue,
+   const options = {
+      title: "",
+      width: 500,
+      height: 350,
+      bar: { groupWidth: "50%" },
+      legend: { position: "none" },
+      hAxis: {
+         title: "$ per month",
       },
-      {
-         category: revenueBreakdown[1].category,
-         revenue: revenueBreakdown[1].revenue,
-      },
-      {
-         category: revenueBreakdown[2].category,
-         revenue: revenueBreakdown[2].revenue,
-      },
-      {
-         category: revenueBreakdown[3].category,
-         revenue: revenueBreakdown[3].revenue,
-      },
-      {
-         category: revenueBreakdown[4].category,
-         revenue: revenueBreakdown[4].revenue,
-      },
-      {
-         category: revenueBreakdown[5].category,
-         revenue: revenueBreakdown[5].revenue,
-      },
-   ];
+      backgroundColor: "#f0f8ff",
+   };
 
    return (
-      <Paper elevation={2} sx={{ mt: 5, p: 1, borderRadius: 2 }}>
+      <Paper elevation={1} sx={{ mt: 5, p: 1, borderRadius: 2, width: "48%" }}>
          <Typography variant="h5" gutterBottom sx={{ fontWeight: "bold" }}>
             Revenue
          </Typography>
          <Box>
-            <BarChart
-               width={700}
-               height={400}
-               data={data}
-               margin={{
-                  top: 20,
-                  right: 0,
-                  left: 0,
-                  bottom: 0,
-               }}
-               barSize={20}
-            >
-               <XAxis
-                  dataKey="category"
-                  scale="point"
-                  padding={{ left: 10, right: 10 }}
-               />
-               <YAxis />
-               <Tooltip />
-               <Legend />
-               <CartesianGrid strokeDasharray="1 3" />
-               <Bar
-                  dataKey="revenue"
-                  fill="#1565c0"
-                  background={{ fill: "#F0F8FF" }}
-               />
-            </BarChart>
+            <Chart
+               chartType="BarChart"
+               width="100%"
+               height="400px"
+               data={revenueBreakdown}
+               options={options}
+            />
          </Box>
       </Paper>
    );
