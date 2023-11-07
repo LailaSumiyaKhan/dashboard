@@ -77,6 +77,32 @@ export function getLastSixMonthsOrdersData() {
    return data;
 }
 
+export function generateStockData() {
+   const categories = ["Men's", "Women's", "Children's", "Sports", "Graphic"];
+   const sizes = ["S", "M", "L", "XL", "XXL"];
+
+   const rows = [];
+   let id = 1;
+   let total = 0;
+
+   categories.forEach((category) => {
+      sizes.forEach((size) => {
+         let stock = Math.floor(Math.random() * 21);
+         total += stock;
+         let status = "OK";
+         if (stock < 5) { status = "LOW" }
+         rows.push({
+            id: id++,
+            category: `${category} ${size}`,
+            stock,
+            status
+         });
+      });
+   });
+
+   return { total, rows };
+}
+
 export function prepareRevenueData(data) {
    let preparedDate = [];
    const first = [
