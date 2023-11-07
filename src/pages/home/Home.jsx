@@ -23,7 +23,7 @@ export default function Home() {
       <>
          <LoadingScreen />
 
-         <Grid container columnGap={2} rowGap={5}>
+         <Grid container justifyContent={"center"} columnGap={5} rowGap={5}>
             <Grid item>
                <Sales />
             </Grid>
