@@ -34,4 +34,51 @@ export const urls = {
    homeData: "data/homeData.json",
 }
 
+export function getLastSixMonthsSalesData() {
+   const data = [["Month", "Sales"]];
+   const monthNames = [
+      "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+   ];
+
+   const currentMonth = new Date().getMonth();
+   const currentYear = new Date().getFullYear();
+
+   for (let i = 0; i < 6; i++) {
+      const month = monthNames[(currentMonth - i + 12) % 12];
+      const year = currentMonth - i < 0 ? currentYear - 1 : currentYear;
+
+      const dateString = `${month} ${year.toString().slice(2)}`;
+      const randomSales = Math.floor(Math.random() * 1000) + 500;
+
+      data.push([dateString, randomSales]);
+   }
+
+   return data;
+}
+
+export function prepareRevenueData(data) {
+   let preparedDate = [];
+   const first = [
+      "Element",
+      "revenue",
+      { role: "style" },
+      {
+         sourceColumn: 0,
+         role: "annotation",
+         type: "string",
+         calc: "stringify",
+      },
+   ];
+   preparedDate.push(first);
+
+   const color = "#1e90ff";
+   for (let i = 0; i < data.length; ++i) {
+      const item = data[i];
+      const preparedItem = [item.category, item.revenue, color, null];
+      preparedDate.push(preparedItem);
+   }
+   return preparedDate;
+}
+
 //https://webflow.com/blog/best-color-combinations
