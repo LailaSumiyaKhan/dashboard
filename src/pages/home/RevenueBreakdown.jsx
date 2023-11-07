@@ -16,18 +16,19 @@ export default function RevenueBreakdown() {
 
    const options = {
       title: "",
-      width: 500,
-      height: 350,
       bar: { groupWidth: "50%" },
       legend: { position: "none" },
       hAxis: {
          title: "$ per month",
       },
-      backgroundColor: "#f0f8ff",
+      // backgroundColor: "#f0f8ff",
    };
 
    return (
-      <Paper elevation={1} sx={{ mt: 5, p: 1, borderRadius: 2, width: "48%" }}>
+      <Paper
+         elevation={1}
+         sx={{ mt: 5, p: 1, borderRadius: 2, width: 500, textAlign: "center" }}
+      >
          <Typography variant="h5" gutterBottom sx={{ fontWeight: "bold" }}>
             Revenue
          </Typography>

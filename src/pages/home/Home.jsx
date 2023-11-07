@@ -7,7 +7,6 @@ import { Box, Grid } from "@mui/material";
 import Sales from "./Sales";
 import Orders from "./Orders";
 import InventoryStatus from "./InventoryStatus";
-import ConversionRate from "./ConversionRate";
 import RevenueBreakdown from "./RevenueBreakdown";
 import TopSelling from "./TopSelling";
 
