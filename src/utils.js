@@ -40,7 +40,6 @@ export function getLastSixMonthsSalesData() {
       "Jan", "Feb", "Mar", "Apr", "May", "Jun",
       "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
    ];
-
    const currentMonth = new Date().getMonth();
    const currentYear = new Date().getFullYear();
 
@@ -49,11 +48,32 @@ export function getLastSixMonthsSalesData() {
       const year = currentMonth - i < 0 ? currentYear - 1 : currentYear;
 
       const dateString = `${month} ${year.toString().slice(2)}`;
-      const randomSales = Math.floor(Math.random() * 1000) + 500;
+      const randomSales = Math.floor(Math.random() * 10000) + 500;
 
       data.push([dateString, randomSales]);
    }
+   return data;
+}
 
+export function getLastSixMonthsOrdersData() {
+   const data = [["Month", "Orders", { role: "style" }]];
+   const monthNames = [
+      "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+   ];
+   const currentMonth = new Date().getMonth();
+   const currentYear = new Date().getFullYear();
+
+   for (let i = 0; i < 6; i++) {
+      const month = monthNames[(currentMonth - i + 12) % 12];
+      const year = currentMonth - i < 0 ? currentYear - 1 : currentYear;
+
+      const dateString = `${month} ${year.toString().slice(2)}`;
+      const randomOrders = Math.floor(Math.random() * 300) + 200;
+      const color = "#8c9eff";
+
+      data.push([dateString, randomOrders, color]);
+   }
    return data;
 }
 
