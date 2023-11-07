@@ -22,18 +22,7 @@ export default function Home() {
    return (
       <>
          <LoadingScreen />
-         {/* <Box
-            sx={{
-               display: "flex",
-               flexDirection: "row",
-               justifyContent: "space-between",
-            }}
-         >
-            <Sales />
-            <Orders />
-            <InventoryStatus />
-            <ConversionRate />
-         </Box> */}
+
          <Grid container columnGap={2} rowGap={5}>
             <Grid item>
                <Sales />
