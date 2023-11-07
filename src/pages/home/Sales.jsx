@@ -3,6 +3,10 @@ import React from "react";
 import { useSelector } from "react-redux";
 import Card from "../../components/Card";
 import LoadingScreen from "../../components/LoadingScreen";
+import { Chart } from "react-google-charts";
+import { getLastSixMonthsSalesData } from "../../utils";
+
+const data = getLastSixMonthsSalesData();
 
 export default function Sales() {
    const homeData = useSelector((store) => store.app.homeData);
@@ -11,27 +15,28 @@ export default function Sales() {
    }
 
    const { today, lastWeek, lastMonth } = homeData.totalSales;
+   const options = {
+      title: "Last 6 Months Sales",
+      // curveType: "function",
+      legend: { position: "bottom" },
+      pointSize: 5,
+   };
    return (
       <Paper
          elevation={2}
-         sx={{ p: 1, borderRadius: 2, textAlign: "center", width: 290 }}
+         sx={{ p: 1, borderRadius: 2, textAlign: "center", width: 500 }}
       >
          {" "}
          <Typography variant="h5" gutterBottom sx={{ fontWeight: "bold" }}>
             Sales
          </Typography>{" "}
-         <Box
-            sx={{
-               display: "flex",
-               flexDirection: "column",
-               justifyContent: "space-evenly",
-            }}
-         >
-            <Card number={today} label={"Today"} isCurrency={true} />
-            <Divider />
-            <Card number={lastWeek} label={"Last Week"} isCurrency={true} />
-            <Card number={lastMonth} label={"Last Month"} isCurrency={true} />
-         </Box>
+         <Chart
+            chartType="LineChart"
+            width="100%"
+            height="400px"
+            data={data}
+            options={options}
+         />
       </Paper>
    );
 }
