@@ -3,30 +3,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import LoadingScreen from "../../components/LoadingScreen";
 import { Chart } from "react-google-charts";
-
-function prepareData(data) {
-   let preparedDate = [];
-   const first = [
-      "Element",
-      "revenue",
-      { role: "style" },
-      {
-         sourceColumn: 0,
-         role: "annotation",
-         type: "string",
-         calc: "stringify",
-      },
-   ];
-   preparedDate.push(first);
-
-   const color = "#1e90ff";
-   for (let i = 0; i < data.length; ++i) {
-      const item = data[i];
-      const preparedItem = [item.category, item.revenue, color, null];
-      preparedDate.push(preparedItem);
-   }
-   return preparedDate;
-}
+import { prepareRevenueData } from "../../utils";
 
 export default function RevenueBreakdown() {
    const homeData = useSelector((store) => store.app.homeData);
@@ -34,7 +11,7 @@ export default function RevenueBreakdown() {
       return <LoadingScreen />;
    }
 
-   const revenueBreakdown = prepareData(homeData.revenueBreakdown);
+   const revenueBreakdown = prepareRevenueData(homeData.revenueBreakdown);
    console.log(revenueBreakdown);
 
    const options = {
