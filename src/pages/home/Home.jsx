@@ -33,9 +33,6 @@ export default function Home() {
             <Grid item>
                <InventoryStatus />
             </Grid>
-            <Grid item>
-               <ConversionRate />
-            </Grid>
          </Grid>
          <Box
             sx={{
