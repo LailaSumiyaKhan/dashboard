@@ -33,7 +33,7 @@ export default function InventoryStatus() {
 
    return (
       <Paper
-         elevation={2}
+         elevation={0}
          sx={{ p: 1, borderRadius: 2, textAlign: "center", width: 500 }}
       >
          {" "}

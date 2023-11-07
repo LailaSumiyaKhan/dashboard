@@ -26,8 +26,8 @@ export default function RevenueBreakdown() {
 
    return (
       <Paper
-         elevation={1}
-         sx={{ mt: 5, p: 1, borderRadius: 2, width: 500, textAlign: "center" }}
+         elevation={0}
+         sx={{ p: 1, borderRadius: 2, width: 500, textAlign: "center" }}
       >
          <Typography variant="h5" gutterBottom sx={{ fontWeight: "bold" }}>
             Revenue

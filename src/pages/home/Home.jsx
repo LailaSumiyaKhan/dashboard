@@ -3,12 +3,11 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getHomeData } from "../../appSlice";
 import LoadingScreen from "../../components/LoadingScreen";
-import { Box, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import Sales from "./Sales";
 import Orders from "./Orders";
 import InventoryStatus from "./InventoryStatus";
 import RevenueBreakdown from "./RevenueBreakdown";
-import TopSelling from "./TopSelling";
 
 export default function Home() {
    const homeData = useSelector((store) => store.app.homeData);
@@ -32,17 +31,10 @@ export default function Home() {
             <Grid item>
                <InventoryStatus />
             </Grid>
+            <Grid item>
+               <RevenueBreakdown />
+            </Grid>
          </Grid>
-         <Box
-            sx={{
-               display: "flex",
-               flexDirection: "row",
-               justifyContent: "space-between",
-            }}
-         >
-            <RevenueBreakdown />
-            <TopSelling />
-         </Box>
       </>
    );
 }
