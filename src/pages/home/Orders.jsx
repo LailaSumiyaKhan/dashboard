@@ -1,7 +1,6 @@
-import { Box, Divider, Paper, Typography } from "@mui/material";
+import { Paper, Typography } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
-import Card from "../../components/Card";
 import LoadingScreen from "../../components/LoadingScreen";
 import { Chart } from "react-google-charts";
 import { getLastSixMonthsOrdersData } from "../../utils";
@@ -17,7 +16,6 @@ export default function Orders() {
       legend: { position: "none" },
    };
 
-   const { today, lastWeek, lastMonth } = homeData.totalOrders;
    return (
       <Paper
          elevation={2}

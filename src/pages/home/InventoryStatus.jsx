@@ -1,9 +1,9 @@
-import { Box, Divider, Paper, Typography } from "@mui/material";
+import { Paper, Typography } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
-import Card from "../../components/Card";
 import LoadingScreen from "../../components/LoadingScreen";
-import LowStockProduct from "../../components/LowStockProduct";
+import { generateStockData } from "../../utils";
+import { DataGrid } from "@mui/x-data-grid";
 
 export default function InventoryStatus() {
    const homeData = useSelector((store) => store.app.homeData);
@@ -11,31 +11,48 @@ export default function InventoryStatus() {
       return <LoadingScreen />;
    }
 
-   const { totalProducts, lowStockAlerts } = homeData.inventoryStatus;
-   const minimumStockProduct = lowStockAlerts.reduce((min, product) => {
-      return product.currentStock < min.currentStock ? product : min;
-   }, lowStockAlerts[0]);
+   const columns = [
+      {
+         field: "category",
+         headerName: "Category",
+         width: 150,
+      },
+      {
+         field: "stock",
+         headerName: "Stock",
+         width: 150,
+      },
+      {
+         field: "status",
+         headerName: "Status",
+         width: 150,
+      },
+   ];
+
+   const { total, rows } = generateStockData();
 
    return (
       <Paper
          elevation={2}
-         sx={{ p: 1, borderRadius: 2, textAlign: "center", width: 290 }}
+         sx={{ p: 1, borderRadius: 2, textAlign: "center", width: 500 }}
       >
          {" "}
          <Typography variant="h5" gutterBottom sx={{ fontWeight: "bold" }}>
-            Inventory
+            Inventory | Total {total}
          </Typography>{" "}
-         <Box
-            sx={{
-               display: "flex",
-               flexDirection: "column",
-               justifyContent: "space-evenly",
+         <DataGrid
+            columns={columns}
+            rows={rows}
+            initialState={{
+               pagination: {
+                  paginationModel: {
+                     pageSize: 5,
+                  },
+               },
             }}
-         >
-            <Card number={totalProducts} label={"Total"} isCurrency={false} />
-            <Divider sx={{ mt: 1, mb: 1 }} />
-            <LowStockProduct minimumStockProduct={minimumStockProduct} />
-         </Box>
+            pageSizeOptions={[5]}
+            disableRowSelectionOnClick
+         />
       </Paper>
    );
 }

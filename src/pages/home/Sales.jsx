@@ -1,7 +1,6 @@
-import { Box, Divider, Paper, Typography } from "@mui/material";
+import { Paper, Typography } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
-import Card from "../../components/Card";
 import LoadingScreen from "../../components/LoadingScreen";
 import { Chart } from "react-google-charts";
 import { getLastSixMonthsSalesData } from "../../utils";
@@ -13,8 +12,6 @@ export default function Sales() {
    if (homeData === null) {
       return <LoadingScreen />;
    }
-
-   const { today, lastWeek, lastMonth } = homeData.totalSales;
    const options = {
       title: "Last 6 Months Sales",
       // curveType: "function",
