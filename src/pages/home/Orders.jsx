@@ -3,6 +3,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import Card from "../../components/Card";
 import LoadingScreen from "../../components/LoadingScreen";
+import { Chart } from "react-google-charts";
+import { getLastSixMonthsOrdersData } from "../../utils";
 
 export default function Orders() {
    const homeData = useSelector((store) => store.app.homeData);
@@ -10,28 +12,28 @@ export default function Orders() {
       return <LoadingScreen />;
    }
 
+   const data = getLastSixMonthsOrdersData();
+   const option = {
+      legend: { position: "none" },
+   };
+
    const { today, lastWeek, lastMonth } = homeData.totalOrders;
    return (
       <Paper
          elevation={2}
-         sx={{ p: 1, borderRadius: 2, textAlign: "center", width: 290 }}
+         sx={{ p: 1, borderRadius: 2, textAlign: "center", width: 500 }}
       >
-         {" "}
          <Typography variant="h5" gutterBottom sx={{ fontWeight: "bold" }}>
             Orders
-         </Typography>{" "}
-         <Box
-            sx={{
-               display: "flex",
-               flexDirection: "column",
-               justifyContent: "space-evenly",
-            }}
-         >
-            <Card number={today} label={"Today"} isCurrency={false} />
-            <Divider />
-            <Card number={lastWeek} label={"Last Week"} isCurrency={false} />
-            <Card number={lastMonth} label={"Last Month"} isCurrency={false} />
-         </Box>
+         </Typography>
+
+         <Chart
+            chartType="ColumnChart"
+            width="100%"
+            height="400px"
+            data={data}
+            options={option}
+         />
       </Paper>
    );
 }
