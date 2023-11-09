@@ -35,7 +35,8 @@ export const urls = {
 }
 
 export function getLastSixMonthsSalesData() {
-   const data = [["Month", "Sales"]];
+   let months = [];
+   let sales = [];
    const monthNames = [
       "Jan", "Feb", "Mar", "Apr", "May", "Jun",
       "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
@@ -49,8 +50,12 @@ export function getLastSixMonthsSalesData() {
 
       const dateString = `${month} ${year.toString().slice(2)}`;
       const randomSales = Math.floor(Math.random() * 10000) + 500;
-
-      data.push([dateString, randomSales]);
+      months.push(dateString);
+      sales.push(randomSales);
+   }
+   const data = {
+      months,
+      sales
    }
    return data;
 }
