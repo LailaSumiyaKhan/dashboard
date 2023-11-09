@@ -2,8 +2,8 @@ import { Box, Paper, Typography } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
 import LoadingScreen from "../../components/LoadingScreen";
-import { Chart } from "react-google-charts";
-import { prepareRevenueData } from "../../utils";
+import Chart from "react-apexcharts";
+import { getLastSixMonthsRevenueData } from "../../utils";
 
 export default function RevenueBreakdown() {
    const homeData = useSelector((store) => store.app.homeData);
@@ -11,18 +11,33 @@ export default function RevenueBreakdown() {
       return <LoadingScreen />;
    }
 
-   const revenueBreakdown = prepareRevenueData(homeData.revenueBreakdown);
-   console.log(revenueBreakdown);
+   const data = getLastSixMonthsRevenueData();
+   const { months, revenue } = data;
 
    const options = {
-      title: "",
-      bar: { groupWidth: "50%" },
-      legend: { position: "none" },
-      hAxis: {
-         title: "$ per month",
+      chart: {
+         id: "basic-bar",
       },
-      // backgroundColor: "#f0f8ff",
+      title: {
+         text: "Revenue Last 6 Months",
+         align: "left",
+      },
+      plotOptions: {
+         bar: {
+            borderRadius: 4,
+            horizontal: true,
+         },
+      },
+      xaxis: {
+         categories: [...months],
+      },
    };
+   const series = [
+      {
+         name: "Revenue",
+         data: [...revenue],
+      },
+   ];
 
    return (
       <Paper
@@ -33,13 +48,7 @@ export default function RevenueBreakdown() {
             Revenue
          </Typography>
          <Box>
-            <Chart
-               chartType="BarChart"
-               width="100%"
-               height="400px"
-               data={revenueBreakdown}
-               options={options}
-            />
+            <Chart options={options} series={series} type="bar" width="500" />
          </Box>
       </Paper>
    );

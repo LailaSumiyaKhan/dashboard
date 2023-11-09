@@ -38,7 +38,7 @@ export default function Sales() {
       },
       labels: [...months],
       xaxis: {
-         type: "datetime",
+         type: "string",
       },
       yaxis: {
          opposite: true,

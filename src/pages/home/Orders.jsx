@@ -2,7 +2,7 @@ import { Paper, Typography } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
 import LoadingScreen from "../../components/LoadingScreen";
-import { Chart } from "react-google-charts";
+import Chart from "react-apexcharts";
 import { getLastSixMonthsOrdersData } from "../../utils";
 
 export default function Orders() {
@@ -12,10 +12,31 @@ export default function Orders() {
    }
 
    const data = getLastSixMonthsOrdersData();
-   const option = {
-      legend: { position: "none" },
-   };
+   const { months, orders } = data;
 
+   const options = {
+      chart: {
+         id: "basic-bar",
+      },
+      title: {
+         text: "Orders Last 6 Months",
+         align: "left",
+      },
+      plotOptions: {
+         bar: {
+            borderRadius: 4,
+         },
+      },
+      xaxis: {
+         categories: [...months],
+      },
+   };
+   const series = [
+      {
+         name: "Orders",
+         data: [...orders],
+      },
+   ];
    return (
       <Paper
          elevation={0}
@@ -25,13 +46,7 @@ export default function Orders() {
             Orders
          </Typography>
 
-         <Chart
-            chartType="ColumnChart"
-            width="100%"
-            height="400px"
-            data={data}
-            options={option}
-         />
+         <Chart options={options} series={series} type="bar" width="500" />
       </Paper>
    );
 }

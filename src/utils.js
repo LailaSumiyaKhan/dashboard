@@ -61,7 +61,8 @@ export function getLastSixMonthsSalesData() {
 }
 
 export function getLastSixMonthsOrdersData() {
-   const data = [["Month", "Orders", { role: "style" }]];
+   const months = [];
+   const orders = [];
    const monthNames = [
       "Jan", "Feb", "Mar", "Apr", "May", "Jun",
       "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
@@ -75,10 +76,39 @@ export function getLastSixMonthsOrdersData() {
 
       const dateString = `${month} ${year.toString().slice(2)}`;
       const randomOrders = Math.floor(Math.random() * 300) + 200;
-      const color = "#8c9eff";
-
-      data.push([dateString, randomOrders, color]);
+      months.push(dateString);
+      orders.push(randomOrders);
    }
+   const data = {
+      months,
+      orders
+   };
+   return data;
+}
+
+export function getLastSixMonthsRevenueData() {
+   const months = [];
+   const revenue = [];
+   const monthNames = [
+      "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+   ];
+   const currentMonth = new Date().getMonth();
+   const currentYear = new Date().getFullYear();
+
+   for (let i = 0; i < 6; i++) {
+      const month = monthNames[(currentMonth - i + 12) % 12];
+      const year = currentMonth - i < 0 ? currentYear - 1 : currentYear;
+
+      const dateString = `${month} ${year.toString().slice(2)}`;
+      const randomOrders = Math.floor(Math.random() * 20000) + 200;
+      months.push(dateString);
+      revenue.push(randomOrders);
+   }
+   const data = {
+      months,
+      revenue
+   };
    return data;
 }
 
