@@ -2,21 +2,50 @@ import { Paper, Typography } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
 import LoadingScreen from "../../components/LoadingScreen";
-import { Chart } from "react-google-charts";
+import Chart from "react-apexcharts";
 import { getLastSixMonthsSalesData } from "../../utils";
-
-const data = getLastSixMonthsSalesData();
 
 export default function Sales() {
    const homeData = useSelector((store) => store.app.homeData);
    if (homeData === null) {
       return <LoadingScreen />;
    }
+   const data = getLastSixMonthsSalesData();
+   const { months, sales } = data;
+   const series = [
+      {
+         name: "Sale ($)",
+         data: [...sales],
+      },
+   ];
    const options = {
-      title: "Last 6 Months Sales",
-      // curveType: "function",
-      legend: { position: "bottom" },
-      pointSize: 5,
+      chart: {
+         type: "area",
+         height: 350,
+         zoom: {
+            enabled: false,
+         },
+      },
+      dataLabels: {
+         enabled: false,
+      },
+      stroke: {
+         curve: "straight",
+      },
+      title: {
+         text: "Sales Last 6 Months",
+         align: "left",
+      },
+      labels: [...months],
+      xaxis: {
+         type: "datetime",
+      },
+      yaxis: {
+         opposite: true,
+      },
+      legend: {
+         horizontalAlign: "left",
+      },
    };
    return (
       <Paper
@@ -27,13 +56,7 @@ export default function Sales() {
          <Typography variant="h5" gutterBottom sx={{ fontWeight: "bold" }}>
             Sales
          </Typography>{" "}
-         <Chart
-            chartType="LineChart"
-            width="100%"
-            height="400px"
-            data={data}
-            options={options}
-         />
+         <Chart options={options} series={series} type="area" height={350} />
       </Paper>
    );
 }
