@@ -112,26 +112,33 @@ export function getLastSixMonthsRevenueData() {
    return data;
 }
 
+// 
+// 
 export function generateStockData() {
-   const categories = ["Men's", "Women's", "Children's", "Sports", "Graphic"];
-   const sizes = ["S", "M", "L", "XL", "XXL"];
+   const categories = ["Men", "Women", "Children", "Sports", "Graphic"];
+
+   const data = [
+      { id: 1, category: "Men S", color: "Black", stock: 20 },
+      { id: 2, category: "Men XL", color: "Red", stock: 52 },
+      { id: 3, category: "Women S", color: "Red", stock: 20 },
+      { id: 4, category: "Children S", color: "Yellow", stock: 10 },
+      { id: 5, category: "Men L", color: "Blue", stock: 50 },
+   ];
 
    const rows = [];
    let id = 1;
    let total = 0;
 
    categories.forEach((category) => {
-      sizes.forEach((size) => {
-         let stock = Math.floor(Math.random() * 21);
-         total += stock;
-         let status = "OK";
-         if (stock < 5) { status = "LOW" }
-         rows.push({
-            id: id++,
-            category: `${category} ${size}`,
-            stock,
-            status
-         });
+      let stock = Math.floor(Math.random() * 100);
+      total += stock;
+      let status = "OK";
+      if (stock < 20) { status = "LOW" }
+      rows.push({
+         id: id++,
+         category: `${category}`,
+         stock,
+         status
       });
    });
 
@@ -160,6 +167,31 @@ export function prepareRevenueData(data) {
       preparedDate.push(preparedItem);
    }
    return preparedDate;
+}
+
+
+export function generateInventoryTableData() {
+   const categories = ["Men", "Women", "Children", "Sports", "Graphic"];
+   const sizes = ["S", "M", "L", "XL", "XXL"];
+   const colors = ["Red", "Blue", "Yellow", "Black", "White"];
+   const data = [];
+   let idCounter = 1;
+
+   categories.forEach((category) => {
+      sizes.forEach((size) => {
+         colors.forEach((color) => {
+            const item = {
+               id: idCounter++,
+               category: `${category} ${size}`,
+               color,
+               stock: Math.floor(Math.random() * 20), // Generate a random stock value
+            };
+            data.push(item);
+         });
+      });
+   });
+
+   return data;
 }
 
 //https://webflow.com/blog/best-color-combinations
