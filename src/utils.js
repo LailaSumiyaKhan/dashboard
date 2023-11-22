@@ -168,7 +168,7 @@ export function generateInventoryTableData() {
             total += stock;
             let status = "OK"
             if (stock < 5) { status = "LOW"; }
-            if (stock < 15) { status = "MEDIUM" }
+            else if (stock < 15) { status = "MEDIUM" }
             const item = {
                id: idCounter++,
                category,
