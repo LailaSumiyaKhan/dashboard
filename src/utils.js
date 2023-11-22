@@ -34,13 +34,14 @@ export const urls = {
    homeData: "data/homeData.json",
 }
 
+const monthNames = [
+   "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+   "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+];
+
 export function getLastSixMonthsSalesData() {
    let months = [];
    let sales = [];
-   const monthNames = [
-      "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-   ];
    const currentMonth = new Date().getMonth();
    const currentYear = new Date().getFullYear();
 
@@ -63,10 +64,6 @@ export function getLastSixMonthsSalesData() {
 export function getLastSixMonthsOrdersData() {
    const months = [];
    const orders = [];
-   const monthNames = [
-      "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-   ];
    const currentMonth = new Date().getMonth();
    const currentYear = new Date().getFullYear();
 
@@ -89,10 +86,6 @@ export function getLastSixMonthsOrdersData() {
 export function getLastSixMonthsRevenueData() {
    const months = [];
    const revenue = [];
-   const monthNames = [
-      "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-   ];
    const currentMonth = new Date().getMonth();
    const currentYear = new Date().getFullYear();
 
@@ -112,8 +105,6 @@ export function getLastSixMonthsRevenueData() {
    return data;
 }
 
-// 
-// 
 export function generateStockData() {
    const categories = ["Men", "Women", "Children", "Sports", "Graphic"];
 
@@ -176,22 +167,34 @@ export function generateInventoryTableData() {
    const colors = ["Red", "Blue", "Yellow", "Black", "White"];
    const data = [];
    let idCounter = 1;
+   let total = 0;
 
    categories.forEach((category) => {
       sizes.forEach((size) => {
          colors.forEach((color) => {
+            const stock = Math.floor(Math.random() * 30); // Generate a random stock value
+            total += stock;
+            let status = "OK"
+            if (stock < 5) { status = "LOW"; }
+            if (stock < 15) { status = "MEDIUM" }
             const item = {
                id: idCounter++,
-               category: `${category} ${size}`,
+               category,
+               size,
                color,
-               stock: Math.floor(Math.random() * 20), // Generate a random stock value
+               stock,
+               status
             };
             data.push(item);
          });
       });
    });
 
-   return data;
+   return { total, data };
+}
+
+export function convertInventoryDataForTable(inventoryData) {
+
 }
 
 //https://webflow.com/blog/best-color-combinations
