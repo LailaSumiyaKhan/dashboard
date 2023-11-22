@@ -108,14 +108,6 @@ export function getLastSixMonthsRevenueData() {
 export function generateStockData() {
    const categories = ["Men", "Women", "Children", "Sports", "Graphic"];
 
-   const data = [
-      { id: 1, category: "Men S", color: "Black", stock: 20 },
-      { id: 2, category: "Men XL", color: "Red", stock: 52 },
-      { id: 3, category: "Women S", color: "Red", stock: 20 },
-      { id: 4, category: "Children S", color: "Yellow", stock: 10 },
-      { id: 5, category: "Men L", color: "Blue", stock: 50 },
-   ];
-
    const rows = [];
    let id = 1;
    let total = 0;
