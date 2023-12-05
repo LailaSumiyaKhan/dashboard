@@ -1,0 +1,1005 @@
+{
+   "total": 3046,
+   "rows": [
+      {
+         "id": 1,
+         "category": "Men",
+         "size": "S",
+         "color": "Red",
+         "stock": 29,
+         "status": "OK"
+      },
+      {
+         "id": 2,
+         "category": "Men",
+         "size": "S",
+         "color": "Blue",
+         "stock": 43,
+         "status": "OK"
+      },
+      {
+         "id": 3,
+         "category": "Men",
+         "size": "S",
+         "color": "Yellow",
+         "stock": 9,
+         "status": "MEDIUM"
+      },
+      {
+         "id": 4,
+         "category": "Men",
+         "size": "S",
+         "color": "Black",
+         "stock": 42,
+         "status": "OK"
+      },
+      {
+         "id": 5,
+         "category": "Men",
+         "size": "S",
+         "color": "White",
+         "stock": 15,
+         "status": "OK"
+      },
+      {
+         "id": 6,
+         "category": "Men",
+         "size": "M",
+         "color": "Red",
+         "stock": 45,
+         "status": "OK"
+      },
+      {
+         "id": 7,
+         "category": "Men",
+         "size": "M",
+         "color": "Blue",
+         "stock": 13,
+         "status": "MEDIUM"
+      },
+      {
+         "id": 8,
+         "category": "Men",
+         "size": "M",
+         "color": "Yellow",
+         "stock": 37,
+         "status": "OK"
+      },
+      {
+         "id": 9,
+         "category": "Men",
+         "size": "M",
+         "color": "Black",
+         "stock": 5,
+         "status": "MEDIUM"
+      },
+      {
+         "id": 10,
+         "category": "Men",
+         "size": "M",
+         "color": "White",
+         "stock": 49,
+         "status": "OK"
+      },
+      {
+         "id": 11,
+         "category": "Men",
+         "size": "L",
+         "color": "Red",
+         "stock": 29,
+         "status": "OK"
+      },
+      {
+         "id": 12,
+         "category": "Men",
+         "size": "L",
+         "color": "Blue",
+         "stock": 4,
+         "status": "LOW"
+      },
+      {
+         "id": 13,
+         "category": "Men",
+         "size": "L",
+         "color": "Yellow",
+         "stock": 28,
+         "status": "OK"
+      },
+      {
+         "id": 14,
+         "category": "Men",
+         "size": "L",
+         "color": "Black",
+         "stock": 13,
+         "status": "MEDIUM"
+      },
+      {
+         "id": 15,
+         "category": "Men",
+         "size": "L",
+         "color": "White",
+         "stock": 29,
+         "status": "OK"
+      },
+      {
+         "id": 16,
+         "category": "Men",
+         "size": "XL",
+         "color": "Red",
+         "stock": 4,
+         "status": "LOW"
+      },
+      {
+         "id": 17,
+         "category": "Men",
+         "size": "XL",
+         "color": "Blue",
+         "stock": 27,
+         "status": "OK"
+      },
+      {
+         "id": 18,
+         "category": "Men",
+         "size": "XL",
+         "color": "Yellow",
+         "stock": 22,
+         "status": "OK"
+      },
+      {
+         "id": 19,
+         "category": "Men",
+         "size": "XL",
+         "color": "Black",
+         "stock": 19,
+         "status": "OK"
+      },
+      {
+         "id": 20,
+         "category": "Men",
+         "size": "XL",
+         "color": "White",
+         "stock": 44,
+         "status": "OK"
+      },
+      {
+         "id": 21,
+         "category": "Men",
+         "size": "XXL",
+         "color": "Red",
+         "stock": 42,
+         "status": "OK"
+      },
+      {
+         "id": 22,
+         "category": "Men",
+         "size": "XXL",
+         "color": "Blue",
+         "stock": 18,
+         "status": "OK"
+      },
+      {
+         "id": 23,
+         "category": "Men",
+         "size": "XXL",
+         "color": "Yellow",
+         "stock": 41,
+         "status": "OK"
+      },
+      {
+         "id": 24,
+         "category": "Men",
+         "size": "XXL",
+         "color": "Black",
+         "stock": 21,
+         "status": "OK"
+      },
+      {
+         "id": 25,
+         "category": "Men",
+         "size": "XXL",
+         "color": "White",
+         "stock": 1,
+         "status": "LOW"
+      },
+      {
+         "id": 26,
+         "category": "Women",
+         "size": "S",
+         "color": "Red",
+         "stock": 16,
+         "status": "OK"
+      },
+      {
+         "id": 27,
+         "category": "Women",
+         "size": "S",
+         "color": "Blue",
+         "stock": 24,
+         "status": "OK"
+      },
+      {
+         "id": 28,
+         "category": "Women",
+         "size": "S",
+         "color": "Yellow",
+         "stock": 48,
+         "status": "OK"
+      },
+      {
+         "id": 29,
+         "category": "Women",
+         "size": "S",
+         "color": "Black",
+         "stock": 40,
+         "status": "OK"
+      },
+      {
+         "id": 30,
+         "category": "Women",
+         "size": "S",
+         "color": "White",
+         "stock": 28,
+         "status": "OK"
+      },
+      {
+         "id": 31,
+         "category": "Women",
+         "size": "M",
+         "color": "Red",
+         "stock": 45,
+         "status": "OK"
+      },
+      {
+         "id": 32,
+         "category": "Women",
+         "size": "M",
+         "color": "Blue",
+         "stock": 35,
+         "status": "OK"
+      },
+      {
+         "id": 33,
+         "category": "Women",
+         "size": "M",
+         "color": "Yellow",
+         "stock": 40,
+         "status": "OK"
+      },
+      {
+         "id": 34,
+         "category": "Women",
+         "size": "M",
+         "color": "Black",
+         "stock": 27,
+         "status": "OK"
+      },
+      {
+         "id": 35,
+         "category": "Women",
+         "size": "M",
+         "color": "White",
+         "stock": 32,
+         "status": "OK"
+      },
+      {
+         "id": 36,
+         "category": "Women",
+         "size": "L",
+         "color": "Red",
+         "stock": 19,
+         "status": "OK"
+      },
+      {
+         "id": 37,
+         "category": "Women",
+         "size": "L",
+         "color": "Blue",
+         "stock": 32,
+         "status": "OK"
+      },
+      {
+         "id": 38,
+         "category": "Women",
+         "size": "L",
+         "color": "Yellow",
+         "stock": 1,
+         "status": "LOW"
+      },
+      {
+         "id": 39,
+         "category": "Women",
+         "size": "L",
+         "color": "Black",
+         "stock": 23,
+         "status": "OK"
+      },
+      {
+         "id": 40,
+         "category": "Women",
+         "size": "L",
+         "color": "White",
+         "stock": 32,
+         "status": "OK"
+      },
+      {
+         "id": 41,
+         "category": "Women",
+         "size": "XL",
+         "color": "Red",
+         "stock": 0,
+         "status": "LOW"
+      },
+      {
+         "id": 42,
+         "category": "Women",
+         "size": "XL",
+         "color": "Blue",
+         "stock": 41,
+         "status": "OK"
+      },
+      {
+         "id": 43,
+         "category": "Women",
+         "size": "XL",
+         "color": "Yellow",
+         "stock": 3,
+         "status": "LOW"
+      },
+      {
+         "id": 44,
+         "category": "Women",
+         "size": "XL",
+         "color": "Black",
+         "stock": 11,
+         "status": "MEDIUM"
+      },
+      {
+         "id": 45,
+         "category": "Women",
+         "size": "XL",
+         "color": "White",
+         "stock": 25,
+         "status": "OK"
+      },
+      {
+         "id": 46,
+         "category": "Women",
+         "size": "XXL",
+         "color": "Red",
+         "stock": 12,
+         "status": "MEDIUM"
+      },
+      {
+         "id": 47,
+         "category": "Women",
+         "size": "XXL",
+         "color": "Blue",
+         "stock": 16,
+         "status": "OK"
+      },
+      {
+         "id": 48,
+         "category": "Women",
+         "size": "XXL",
+         "color": "Yellow",
+         "stock": 2,
+         "status": "LOW"
+      },
+      {
+         "id": 49,
+         "category": "Women",
+         "size": "XXL",
+         "color": "Black",
+         "stock": 23,
+         "status": "OK"
+      },
+      {
+         "id": 50,
+         "category": "Women",
+         "size": "XXL",
+         "color": "White",
+         "stock": 48,
+         "status": "OK"
+      },
+      {
+         "id": 51,
+         "category": "Children",
+         "size": "S",
+         "color": "Red",
+         "stock": 9,
+         "status": "MEDIUM"
+      },
+      {
+         "id": 52,
+         "category": "Children",
+         "size": "S",
+         "color": "Blue",
+         "stock": 24,
+         "status": "OK"
+      },
+      {
+         "id": 53,
+         "category": "Children",
+         "size": "S",
+         "color": "Yellow",
+         "stock": 28,
+         "status": "OK"
+      },
+      {
+         "id": 54,
+         "category": "Children",
+         "size": "S",
+         "color": "Black",
+         "stock": 8,
+         "status": "MEDIUM"
+      },
+      {
+         "id": 55,
+         "category": "Children",
+         "size": "S",
+         "color": "White",
+         "stock": 12,
+         "status": "MEDIUM"
+      },
+      {
+         "id": 56,
+         "category": "Children",
+         "size": "M",
+         "color": "Red",
+         "stock": 1,
+         "status": "LOW"
+      },
+      {
+         "id": 57,
+         "category": "Children",
+         "size": "M",
+         "color": "Blue",
+         "stock": 3,
+         "status": "LOW"
+      },
+      {
+         "id": 58,
+         "category": "Children",
+         "size": "M",
+         "color": "Yellow",
+         "stock": 33,
+         "status": "OK"
+      },
+      {
+         "id": 59,
+         "category": "Children",
+         "size": "M",
+         "color": "Black",
+         "stock": 12,
+         "status": "MEDIUM"
+      },
+      {
+         "id": 60,
+         "category": "Children",
+         "size": "M",
+         "color": "White",
+         "stock": 20,
+         "status": "OK"
+      },
+      {
+         "id": 61,
+         "category": "Children",
+         "size": "L",
+         "color": "Red",
+         "stock": 25,
+         "status": "OK"
+      },
+      {
+         "id": 62,
+         "category": "Children",
+         "size": "L",
+         "color": "Blue",
+         "stock": 11,
+         "status": "MEDIUM"
+      },
+      {
+         "id": 63,
+         "category": "Children",
+         "size": "L",
+         "color": "Yellow",
+         "stock": 21,
+         "status": "OK"
+      },
+      {
+         "id": 64,
+         "category": "Children",
+         "size": "L",
+         "color": "Black",
+         "stock": 21,
+         "status": "OK"
+      },
+      {
+         "id": 65,
+         "category": "Children",
+         "size": "L",
+         "color": "White",
+         "stock": 30,
+         "status": "OK"
+      },
+      {
+         "id": 66,
+         "category": "Children",
+         "size": "XL",
+         "color": "Red",
+         "stock": 19,
+         "status": "OK"
+      },
+      {
+         "id": 67,
+         "category": "Children",
+         "size": "XL",
+         "color": "Blue",
+         "stock": 40,
+         "status": "OK"
+      },
+      {
+         "id": 68,
+         "category": "Children",
+         "size": "XL",
+         "color": "Yellow",
+         "stock": 36,
+         "status": "OK"
+      },
+      {
+         "id": 69,
+         "category": "Children",
+         "size": "XL",
+         "color": "Black",
+         "stock": 32,
+         "status": "OK"
+      },
+      {
+         "id": 70,
+         "category": "Children",
+         "size": "XL",
+         "color": "White",
+         "stock": 32,
+         "status": "OK"
+      },
+      {
+         "id": 71,
+         "category": "Children",
+         "size": "XXL",
+         "color": "Red",
+         "stock": 13,
+         "status": "MEDIUM"
+      },
+      {
+         "id": 72,
+         "category": "Children",
+         "size": "XXL",
+         "color": "Blue",
+         "stock": 16,
+         "status": "OK"
+      },
+      {
+         "id": 73,
+         "category": "Children",
+         "size": "XXL",
+         "color": "Yellow",
+         "stock": 31,
+         "status": "OK"
+      },
+      {
+         "id": 74,
+         "category": "Children",
+         "size": "XXL",
+         "color": "Black",
+         "stock": 9,
+         "status": "MEDIUM"
+      },
+      {
+         "id": 75,
+         "category": "Children",
+         "size": "XXL",
+         "color": "White",
+         "stock": 7,
+         "status": "MEDIUM"
+      },
+      {
+         "id": 76,
+         "category": "Sports",
+         "size": "S",
+         "color": "Red",
+         "stock": 43,
+         "status": "OK"
+      },
+      {
+         "id": 77,
+         "category": "Sports",
+         "size": "S",
+         "color": "Blue",
+         "stock": 14,
+         "status": "MEDIUM"
+      },
+      {
+         "id": 78,
+         "category": "Sports",
+         "size": "S",
+         "color": "Yellow",
+         "stock": 17,
+         "status": "OK"
+      },
+      {
+         "id": 79,
+         "category": "Sports",
+         "size": "S",
+         "color": "Black",
+         "stock": 48,
+         "status": "OK"
+      },
+      {
+         "id": 80,
+         "category": "Sports",
+         "size": "S",
+         "color": "White",
+         "stock": 40,
+         "status": "OK"
+      },
+      {
+         "id": 81,
+         "category": "Sports",
+         "size": "M",
+         "color": "Red",
+         "stock": 18,
+         "status": "OK"
+      },
+      {
+         "id": 82,
+         "category": "Sports",
+         "size": "M",
+         "color": "Blue",
+         "stock": 30,
+         "status": "OK"
+      },
+      {
+         "id": 83,
+         "category": "Sports",
+         "size": "M",
+         "color": "Yellow",
+         "stock": 35,
+         "status": "OK"
+      },
+      {
+         "id": 84,
+         "category": "Sports",
+         "size": "M",
+         "color": "Black",
+         "stock": 10,
+         "status": "MEDIUM"
+      },
+      {
+         "id": 85,
+         "category": "Sports",
+         "size": "M",
+         "color": "White",
+         "stock": 34,
+         "status": "OK"
+      },
+      {
+         "id": 86,
+         "category": "Sports",
+         "size": "L",
+         "color": "Red",
+         "stock": 12,
+         "status": "MEDIUM"
+      },
+      {
+         "id": 87,
+         "category": "Sports",
+         "size": "L",
+         "color": "Blue",
+         "stock": 8,
+         "status": "MEDIUM"
+      },
+      {
+         "id": 88,
+         "category": "Sports",
+         "size": "L",
+         "color": "Yellow",
+         "stock": 43,
+         "status": "OK"
+      },
+      {
+         "id": 89,
+         "category": "Sports",
+         "size": "L",
+         "color": "Black",
+         "stock": 9,
+         "status": "MEDIUM"
+      },
+      {
+         "id": 90,
+         "category": "Sports",
+         "size": "L",
+         "color": "White",
+         "stock": 8,
+         "status": "MEDIUM"
+      },
+      {
+         "id": 91,
+         "category": "Sports",
+         "size": "XL",
+         "color": "Red",
+         "stock": 24,
+         "status": "OK"
+      },
+      {
+         "id": 92,
+         "category": "Sports",
+         "size": "XL",
+         "color": "Blue",
+         "stock": 32,
+         "status": "OK"
+      },
+      {
+         "id": 93,
+         "category": "Sports",
+         "size": "XL",
+         "color": "Yellow",
+         "stock": 18,
+         "status": "OK"
+      },
+      {
+         "id": 94,
+         "category": "Sports",
+         "size": "XL",
+         "color": "Black",
+         "stock": 26,
+         "status": "OK"
+      },
+      {
+         "id": 95,
+         "category": "Sports",
+         "size": "XL",
+         "color": "White",
+         "stock": 14,
+         "status": "MEDIUM"
+      },
+      {
+         "id": 96,
+         "category": "Sports",
+         "size": "XXL",
+         "color": "Red",
+         "stock": 37,
+         "status": "OK"
+      },
+      {
+         "id": 97,
+         "category": "Sports",
+         "size": "XXL",
+         "color": "Blue",
+         "stock": 13,
+         "status": "MEDIUM"
+      },
+      {
+         "id": 98,
+         "category": "Sports",
+         "size": "XXL",
+         "color": "Yellow",
+         "stock": 33,
+         "status": "OK"
+      },
+      {
+         "id": 99,
+         "category": "Sports",
+         "size": "XXL",
+         "color": "Black",
+         "stock": 22,
+         "status": "OK"
+      },
+      {
+         "id": 100,
+         "category": "Sports",
+         "size": "XXL",
+         "color": "White",
+         "stock": 32,
+         "status": "OK"
+      },
+      {
+         "id": 101,
+         "category": "Graphic",
+         "size": "S",
+         "color": "Red",
+         "stock": 4,
+         "status": "LOW"
+      },
+      {
+         "id": 102,
+         "category": "Graphic",
+         "size": "S",
+         "color": "Blue",
+         "stock": 20,
+         "status": "OK"
+      },
+      {
+         "id": 103,
+         "category": "Graphic",
+         "size": "S",
+         "color": "Yellow",
+         "stock": 22,
+         "status": "OK"
+      },
+      {
+         "id": 104,
+         "category": "Graphic",
+         "size": "S",
+         "color": "Black",
+         "stock": 21,
+         "status": "OK"
+      },
+      {
+         "id": 105,
+         "category": "Graphic",
+         "size": "S",
+         "color": "White",
+         "stock": 7,
+         "status": "MEDIUM"
+      },
+      {
+         "id": 106,
+         "category": "Graphic",
+         "size": "M",
+         "color": "Red",
+         "stock": 46,
+         "status": "OK"
+      },
+      {
+         "id": 107,
+         "category": "Graphic",
+         "size": "M",
+         "color": "Blue",
+         "stock": 47,
+         "status": "OK"
+      },
+      {
+         "id": 108,
+         "category": "Graphic",
+         "size": "M",
+         "color": "Yellow",
+         "stock": 41,
+         "status": "OK"
+      },
+      {
+         "id": 109,
+         "category": "Graphic",
+         "size": "M",
+         "color": "Black",
+         "stock": 29,
+         "status": "OK"
+      },
+      {
+         "id": 110,
+         "category": "Graphic",
+         "size": "M",
+         "color": "White",
+         "stock": 14,
+         "status": "MEDIUM"
+      },
+      {
+         "id": 111,
+         "category": "Graphic",
+         "size": "L",
+         "color": "Red",
+         "stock": 37,
+         "status": "OK"
+      },
+      {
+         "id": 112,
+         "category": "Graphic",
+         "size": "L",
+         "color": "Blue",
+         "stock": 0,
+         "status": "LOW"
+      },
+      {
+         "id": 113,
+         "category": "Graphic",
+         "size": "L",
+         "color": "Yellow",
+         "stock": 44,
+         "status": "OK"
+      },
+      {
+         "id": 114,
+         "category": "Graphic",
+         "size": "L",
+         "color": "Black",
+         "stock": 16,
+         "status": "OK"
+      },
+      {
+         "id": 115,
+         "category": "Graphic",
+         "size": "L",
+         "color": "White",
+         "stock": 2,
+         "status": "LOW"
+      },
+      {
+         "id": 116,
+         "category": "Graphic",
+         "size": "XL",
+         "color": "Red",
+         "stock": 21,
+         "status": "OK"
+      },
+      {
+         "id": 117,
+         "category": "Graphic",
+         "size": "XL",
+         "color": "Blue",
+         "stock": 44,
+         "status": "OK"
+      },
+      {
+         "id": 118,
+         "category": "Graphic",
+         "size": "XL",
+         "color": "Yellow",
+         "stock": 44,
+         "status": "OK"
+      },
+      {
+         "id": 119,
+         "category": "Graphic",
+         "size": "XL",
+         "color": "Black",
+         "stock": 43,
+         "status": "OK"
+      },
+      {
+         "id": 120,
+         "category": "Graphic",
+         "size": "XL",
+         "color": "White",
+         "stock": 24,
+         "status": "OK"
+      },
+      {
+         "id": 121,
+         "category": "Graphic",
+         "size": "XXL",
+         "color": "Red",
+         "stock": 43,
+         "status": "OK"
+      },
+      {
+         "id": 122,
+         "category": "Graphic",
+         "size": "XXL",
+         "color": "Blue",
+         "stock": 41,
+         "status": "OK"
+      },
+      {
+         "id": 123,
+         "category": "Graphic",
+         "size": "XXL",
+         "color": "Yellow",
+         "stock": 35,
+         "status": "OK"
+      },
+      {
+         "id": 124,
+         "category": "Graphic",
+         "size": "XXL",
+         "color": "Black",
+         "stock": 4,
+         "status": "LOW"
+      },
+      {
+         "id": 125,
+         "category": "Graphic",
+         "size": "XXL",
+         "color": "White",
+         "stock": 32,
+         "status": "OK"
+      }
+   ]
+}
