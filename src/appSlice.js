@@ -6,17 +6,38 @@ const initialState = {
    username: "",
    password: "",
    isAuth: true,
+
    homeData: null,
+   inventoryTable: null
 }
 
 export const getHomeData = createAsyncThunk(
    "home/getHomeData",
    async (obj, thunkAPI) => {
-      // Fake delay
-      await new Promise((resolve) => setTimeout(resolve, 700));
-      const response = await fetch(urls.homeData);
-      const data = await response.json();
-      return data;
+      try {
+         // Fake delay
+         await new Promise((resolve) => setTimeout(resolve, 700));
+         const response = await fetch(urls.homeData);
+         const data = await response.json();
+         return data;
+      } catch (error) {
+         console.error(error);
+      }
+   }
+);
+
+export const getInventoryTable = createAsyncThunk(
+   "inventory/getInventoryTable",
+   async (obj, thunkAPI) => {
+      try {
+         // Fake delay
+         await new Promise((resolve) => setTimeout(resolve, 700));
+         const response = await fetch(urls.inventory);
+         const data = await response.json();
+         return data;
+      } catch (error) {
+         console.error(error);
+      }
    }
 );
 
@@ -47,13 +68,25 @@ export const appSlice = createSlice({
          })
          .addCase(getHomeData.rejected, (state, action) => {
             state.isLoading = false;
-            console.log(action.error.message);
+            console.error(`getHomeData - ${action.error.message}`);
+         })
+
+         .addCase(getInventoryTable.pending, (state, action) => {
+            state.isLoading = true;
+         })
+         .addCase(getInventoryTable.fulfilled, (state, action) => {
+            state.inventoryTable = action.payload;
+            state.isLoading = false;
+         })
+         .addCase(getInventoryTable.rejected, (state, action) => {
+            state.isLoading = false;
+            console.error(`getInventoryTable - ${action.error.message}`)
          })
    }
 });
 
 export const {
-   setState
+   setState,
 } = appSlice.actions;
 
 export default appSlice.reducer;
