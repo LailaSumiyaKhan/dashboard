@@ -1,13 +1,13 @@
 import { Box, Typography } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
-import React from "react";
+import React, { useEffect } from "react";
 import { generateInventoryTableData } from "../../utils";
 import Total from "./Total";
+import { useDispatch, useSelector } from "react-redux";
+import LoadingScreen from "../../components/LoadingScreen";
+import { getInventoryTable } from "../../appSlice";
 
 /*
-A card will show total number of t-shirts available
-A table will show which category of t-shirt, size, color, available stock
-This table data can be filtered based on a dropdown selected value (low stock products, out of stock, new)
 Clicking on a specific row of the table will open a pop up
 The pop up will show details of the t-shirt and it's last 6 months sell history
 In the pop up if stock for a product is low there will be a button to add stock
@@ -23,11 +23,22 @@ const columns = [
 ];
 
 export default function Inventory() {
-   const stockData = generateInventoryTableData();
-   const { total, data } = stockData;
-   console.log(data);
+   const dispatch = useDispatch();
+   const inventoryTable = useSelector((store) => store.app.inventoryTable);
+
+   useEffect(() => {
+      if (!inventoryTable) {
+         dispatch(getInventoryTable());
+      }
+   }, []);
+
+   if (!inventoryTable) {
+      return <LoadingScreen />;
+   }
+   const { total, rows } = inventoryTable;
+
    return (
-      <Box sx={{ width: "100  %" }}>
+      <Box sx={{ width: "100%" }}>
          <Total total={total} />
 
          <Typography variant="h5" sx={{ mt: 3, fontWeight: "bold" }}>
@@ -36,7 +47,7 @@ export default function Inventory() {
 
          <DataGrid
             columns={columns}
-            rows={data}
+            rows={rows}
             initialState={{
                pagination: {
                   paginationModel: {
