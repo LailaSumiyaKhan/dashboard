@@ -32,6 +32,7 @@ export const colors = {
 
 export const urls = {
    homeData: "data/homeData.json",
+   inventory: "data/inventoryTable.json",
 }
 
 const monthNames = [
@@ -157,14 +158,14 @@ export function generateInventoryTableData() {
    const categories = ["Men", "Women", "Children", "Sports", "Graphic"];
    const sizes = ["S", "M", "L", "XL", "XXL"];
    const colors = ["Red", "Blue", "Yellow", "Black", "White"];
-   const data = [];
+   const rows = [];
    let idCounter = 1;
    let total = 0;
 
    categories.forEach((category) => {
       sizes.forEach((size) => {
          colors.forEach((color) => {
-            const stock = Math.floor(Math.random() * 30); // Generate a random stock value
+            const stock = Math.floor(Math.random() * 50); // Generate a random stock value
             total += stock;
             let status = "OK"
             if (stock < 5) { status = "LOW"; }
@@ -177,16 +178,30 @@ export function generateInventoryTableData() {
                stock,
                status
             };
-            data.push(item);
+            rows.push(item);
          });
       });
    });
-
-   return { total, data };
+   // downloadObjectAsJson({ total, rows }, "inventoryTable")
+   return { total, rows };
 }
 
 export function convertInventoryDataForTable(inventoryData) {
 
 }
+
+export function downloadObjectAsJson(obj, filename) {
+   const json = JSON.stringify(obj);
+   const blob = new Blob([json], { type: 'application/json' });
+   const url = URL.createObjectURL(blob);
+
+   const a = document.createElement('a');
+   a.style.display = 'none';
+   a.href = url;
+   a.download = filename + '.json';
+   a.click();
+   URL.revokeObjectURL(url);
+}
+
 
 //https://webflow.com/blog/best-color-combinations
