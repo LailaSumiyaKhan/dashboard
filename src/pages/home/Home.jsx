@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getHomeData } from "../../appSlice";
+import { getHomeData, getInventoryTable } from "../../appSlice";
 import LoadingScreen from "../../components/LoadingScreen";
 import { Grid } from "@mui/material";
 import Sales from "./Sales";
@@ -10,11 +10,14 @@ import InventoryStatus from "./InventoryStatus";
 import RevenueBreakdown from "./RevenueBreakdown";
 
 export default function Home() {
-   const homeData = useSelector((store) => store.app.homeData);
+   const { homeData, inventoryTable } = useSelector((store) => store.app);
    const dispatch = useDispatch();
    useEffect(() => {
-      if (homeData === null) {
+      if (!homeData) {
          dispatch(getHomeData());
+      }
+      if (!inventoryTable) {
+         dispatch(getInventoryTable());
       }
    }, []);
    return (

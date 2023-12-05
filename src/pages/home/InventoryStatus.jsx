@@ -2,12 +2,12 @@ import { Paper, Typography } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
 import LoadingScreen from "../../components/LoadingScreen";
-import { generateStockData } from "../../utils";
+import { generateStockData, getInventorySummary } from "../../utils";
 import { DataGrid } from "@mui/x-data-grid";
 
 export default function InventoryStatus() {
-   const homeData = useSelector((store) => store.app.homeData);
-   if (homeData === null) {
+   const inventoryTable = useSelector((store) => store.app.inventoryTable);
+   if (!inventoryTable) {
       return <LoadingScreen />;
    }
 
@@ -15,21 +15,27 @@ export default function InventoryStatus() {
       {
          field: "category",
          headerName: "Category",
-         width: 150,
+         width: 100,
+      },
+      {
+         field: "sizes",
+         headerName: "Sizes",
+         width: 120,
+      },
+      {
+         field: "colors",
+         headerName: "Colors",
+         width: 120,
       },
       {
          field: "stock",
          headerName: "Stock",
-         width: 150,
-      },
-      {
-         field: "status",
-         headerName: "Status",
-         width: 150,
+         width: 100,
       },
    ];
 
-   const { total, rows } = generateStockData();
+   const { total, rows } = inventoryTable;
+   const summaryRows = getInventorySummary(rows);
 
    return (
       <Paper
@@ -42,7 +48,7 @@ export default function InventoryStatus() {
          </Typography>{" "}
          <DataGrid
             columns={columns}
-            rows={rows}
+            rows={summaryRows}
             initialState={{
                pagination: {
                   paginationModel: {

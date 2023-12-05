@@ -35,6 +35,8 @@ export const urls = {
    inventory: "data/inventoryTable.json",
 }
 
+const categories = ["Men", "Women", "Children", "Sports", "Graphic"];
+
 const monthNames = [
    "Jan", "Feb", "Mar", "Apr", "May", "Jun",
    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
@@ -51,7 +53,7 @@ export function getLastSixMonthsSalesData() {
       const year = currentMonth - i < 0 ? currentYear - 1 : currentYear;
 
       const dateString = `${month} ${year.toString().slice(2)}`;
-      const randomSales = Math.floor(Math.random() * 10000) + 500;
+      const randomSales = Math.floor(Math.random() * 7000) + 5000;
       months.push(dateString);
       sales.push(randomSales);
    }
@@ -203,5 +205,21 @@ export function downloadObjectAsJson(obj, filename) {
    URL.revokeObjectURL(url);
 }
 
+export function getInventorySummary(rows) {
+   let summaryRows = [];
+
+   categories.forEach(category => {
+      let stock = 0;
+      rows.forEach(item => {
+         if (item.category === category) {
+            stock += item.stock;
+         }
+      });
+      const row = { id: category, category, sizes: "S, M, L, XL, XXL", colors: "Red, Blue, Black...", stock };
+      summaryRows.push(row);
+   });
+   console.log(summaryRows);
+   return summaryRows;
+}
 
 //https://webflow.com/blog/best-color-combinations
