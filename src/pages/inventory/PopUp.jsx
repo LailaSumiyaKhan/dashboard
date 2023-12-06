@@ -4,6 +4,8 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { setState } from "../../appSlice";
+import { Divider, Grid } from "@mui/material";
+import ProductSellLastOneYear from "./ProductSellLastOneYear";
 
 const style = {
    position: "absolute",
@@ -43,9 +45,80 @@ export default function PopUp() {
             aria-describedby="modal-modal-description"
          >
             <Box sx={style}>
-               <Typography id="modal-modal-title" variant="h6" component="h2">
-                  {category} {size} {color} {stock}
+               <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                  Product Detail:
                </Typography>
+               <Divider sx={{ mb: 1 }} />
+
+               <Box
+                  sx={{
+                     display: "flex",
+                     flexDirection: "row",
+                     justifyContent: "flex-start",
+                  }}
+               >
+                  <Typography
+                     variant="subtitle1"
+                     sx={{ fontWeight: "bold", mr: 1 }}
+                  >
+                     Name:
+                  </Typography>
+                  <Typography variant="subtitle1">
+                     {category} {size} Size {color} T-Shirt
+                  </Typography>
+               </Box>
+
+               <Box
+                  sx={{
+                     display: "flex",
+                     flexDirection: "row",
+                     justifyContent: "flex-start",
+                  }}
+               >
+                  <Typography
+                     variant="subtitle1"
+                     sx={{ fontWeight: "bold", mr: 1 }}
+                  >
+                     Available Stock:
+                  </Typography>
+                  <Typography variant="subtitle1">{stock}</Typography>
+               </Box>
+
+               <Box
+                  sx={{
+                     display: "flex",
+                     flexDirection: "row",
+                     justifyContent: "flex-start",
+                  }}
+               >
+                  <Typography
+                     variant="subtitle1"
+                     sx={{ fontWeight: "bold", mr: 1 }}
+                  >
+                     Stock Status:
+                  </Typography>
+                  <Typography variant="subtitle1">{status}</Typography>
+               </Box>
+
+               <Box
+                  sx={{
+                     display: "flex",
+                     flexDirection: "row",
+                     justifyContent: "flex-start",
+                  }}
+               >
+                  <Typography
+                     variant="subtitle1"
+                     sx={{ fontWeight: "bold", mr: 1 }}
+                  >
+                     Sells Last 1 Year:
+                  </Typography>
+                  <Typography variant="subtitle1">{totalSells}</Typography>
+               </Box>
+
+               <Divider sx={{ mb: 2 }} />
+
+               <ProductSellLastOneYear sells={sells} />
             </Box>
          </Modal>
       </Box>

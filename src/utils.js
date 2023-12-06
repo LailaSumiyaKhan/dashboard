@@ -229,12 +229,26 @@ export function getInventorySummary(rows) {
       const row = { id: category, category, sizes: "S, M, L, XL, XXL", colors: "Red, Blue, Black...", stock };
       summaryRows.push(row);
    });
-   console.log(summaryRows);
    return summaryRows;
 }
 
 export function getPopUpProduct(rows, selectedRow) {
    return rows.find(row => row.id === selectedRow);
+}
+
+export function getLastNMonths(n) {
+
+   const currentDate = new Date();
+   const currentYear = currentDate.getFullYear() % 100; // Get last two digits of the year
+
+   const result = [];
+   for (let i = 0; i < n; i++) {
+      const monthIndex = (currentDate.getMonth() - i + 12) % 12; // Calculate month index going back n months
+      const monthYearString = `${monthNames[monthIndex]} ${currentYear}`;
+      result.push(monthYearString);
+   }
+
+   return result.reverse(); // Reverse the array to get the months in ascending order
 }
 
 //https://webflow.com/blog/best-color-combinations
