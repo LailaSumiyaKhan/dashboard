@@ -3,12 +3,15 @@ import { urls } from "./utils";
 
 const initialState = {
    isLoading: false,
+   inventoryPopUpOpen: true,
    username: "",
    password: "",
    isAuth: true,
 
    homeData: null,
-   inventoryTable: null
+   inventoryTable: null,
+   inventoryTableSelRow: [],
+   popUpProduct: null,
 }
 
 export const getHomeData = createAsyncThunk(

@@ -4,7 +4,9 @@ import React, { useEffect } from "react";
 import Total from "./Total";
 import { useDispatch, useSelector } from "react-redux";
 import LoadingScreen from "../../components/LoadingScreen";
-import { getInventoryTable } from "../../appSlice";
+import { getInventoryTable, setState } from "../../appSlice";
+import PopUp from "./PopUp";
+import { getPopUpProduct } from "../../utils";
 
 /*
 Clicking on a specific row of the table will open a pop up
@@ -23,13 +25,25 @@ const columns = [
 
 export default function Inventory() {
    const dispatch = useDispatch();
-   const inventoryTable = useSelector((store) => store.app.inventoryTable);
+   const { inventoryTable, inventoryTableSelRow } = useSelector(
+      (store) => store.app
+   );
 
    useEffect(() => {
       if (!inventoryTable) {
          dispatch(getInventoryTable());
       }
    }, []);
+
+   useEffect(() => {
+      if (inventoryTableSelRow.length > 0) {
+         const popUpProduct = getPopUpProduct(
+            inventoryTable.rows,
+            inventoryTableSelRow[0]
+         );
+         dispatch(setState("popUpProduct", popUpProduct));
+      }
+   }, [inventoryTableSelRow]);
 
    if (!inventoryTable) {
       return <LoadingScreen />;
@@ -38,6 +52,8 @@ export default function Inventory() {
 
    return (
       <Box sx={{ width: "100%" }}>
+         <PopUp />
+
          <Total total={total} />
 
          <Typography variant="h5" sx={{ mt: 3, fontWeight: "bold" }}>
@@ -55,7 +71,11 @@ export default function Inventory() {
                },
             }}
             pageSizeOptions={[5, 10, 15, 20]}
-            disableRowSelectionOnClick
+            onRowSelectionModelChange={(selectedRows) => {
+               dispatch(setState("inventoryTableSelRow", selectedRows));
+               dispatch(setState("inventoryPopUpOpen", true));
+            }}
+            rowSelectionModel={inventoryTableSelRow}
             sx={{
                mt: 1,
                "& .MuiDataGrid-columnHeader": {

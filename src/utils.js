@@ -36,6 +36,7 @@ export const urls = {
 }
 
 const categories = ["Men", "Women", "Children", "Sports", "Graphic"];
+const sizes = ["S", "M", "L", "XL", "XXL"];
 
 const monthNames = [
    "Jan", "Feb", "Mar", "Apr", "May", "Jun",
@@ -155,10 +156,16 @@ export function prepareRevenueData(data) {
    return preparedDate;
 }
 
+function generateNMonthsSells(n) {
+   const sells = [];
+   for (let i = 0; i < 12; i++) {
+      const sell = Math.floor(Math.random() * (n + 1));
+      sells.push(sell);
+   }
+   return sells;
+}
 
 export function generateInventoryTableData() {
-   const categories = ["Men", "Women", "Children", "Sports", "Graphic"];
-   const sizes = ["S", "M", "L", "XL", "XXL"];
    const colors = ["Red", "Blue", "Yellow", "Black", "White"];
    const rows = [];
    let idCounter = 1;
@@ -167,7 +174,9 @@ export function generateInventoryTableData() {
    categories.forEach((category) => {
       sizes.forEach((size) => {
          colors.forEach((color) => {
-            const stock = Math.floor(Math.random() * 50); // Generate a random stock value
+            const stock = Math.floor(Math.random() * 50);
+            const sells = generateNMonthsSells(stock);
+            const totalSells = sells.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
             total += stock;
             let status = "OK"
             if (stock < 5) { status = "LOW"; }
@@ -178,13 +187,15 @@ export function generateInventoryTableData() {
                size,
                color,
                stock,
-               status
+               status,
+               sells,
+               totalSells
             };
             rows.push(item);
          });
       });
    });
-   // downloadObjectAsJson({ total, rows }, "inventoryTable")
+   downloadObjectAsJson({ total, rows }, "inventoryTable")
    return { total, rows };
 }
 
@@ -220,6 +231,10 @@ export function getInventorySummary(rows) {
    });
    console.log(summaryRows);
    return summaryRows;
+}
+
+export function getPopUpProduct(rows, selectedRow) {
+   return rows.find(row => row.id === selectedRow);
 }
 
 //https://webflow.com/blog/best-color-combinations
