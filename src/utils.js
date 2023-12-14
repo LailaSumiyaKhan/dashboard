@@ -35,8 +35,9 @@ export const urls = {
    inventory: "data/inventoryTable.json",
 }
 
-const categories = ["Men", "Women", "Children", "Sports", "Graphic"];
-const sizes = ["S", "M", "L", "XL", "XXL"];
+export const categories = ["Men", "Women", "Children", "Sports", "Graphic"];
+export const sizes = ["S", "M", "L", "XL", "XXL"];
+export const availableColors = ["Red", "Blue", "Yellow", "Black", "White"];
 
 const monthNames = [
    "Jan", "Feb", "Mar", "Apr", "May", "Jun",

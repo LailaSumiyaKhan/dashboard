@@ -13,7 +13,6 @@ export default function Total({ total }) {
          <Typography variant="body1" sx={{ fontWeight: "bold" }}>
             T-Shirts Available
          </Typography>
-         <Divider sx={{ mt: 1 }} />
       </Paper>
    );
 }

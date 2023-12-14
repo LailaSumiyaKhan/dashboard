@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { setState } from "../../appSlice";
-import { Divider, Grid } from "@mui/material";
+import { Divider } from "@mui/material";
 import ProductSellLastOneYear from "./ProductSellLastOneYear";
 
 const style = {

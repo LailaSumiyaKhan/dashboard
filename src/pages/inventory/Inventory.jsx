@@ -7,13 +7,7 @@ import LoadingScreen from "../../components/LoadingScreen";
 import { getInventoryTable, setState } from "../../appSlice";
 import PopUp from "./PopUp";
 import { getPopUpProduct } from "../../utils";
-
-/*
-Clicking on a specific row of the table will open a pop up
-The pop up will show details of the t-shirt and it's last 6 months sell history
-In the pop up if stock for a product is low there will be a button to add stock
-Add, remove, update stock individual and bulk
-*/
+import InventoryTabs from "./InventoryTabs";
 
 const columns = [
    { field: "category", headerName: "Category", width: 150 },
@@ -56,6 +50,8 @@ export default function Inventory() {
 
          <Total total={total} />
 
+         <InventoryTabs />
+
          <Typography variant="h5" sx={{ mt: 3, fontWeight: "bold" }}>
             Inventory Details
          </Typography>
@@ -70,7 +66,7 @@ export default function Inventory() {
                   },
                },
             }}
-            pageSizeOptions={[5, 10, 15, 20]}
+            pageSizeOptions={[10, 20, 30, 50]}
             onRowSelectionModelChange={(selectedRows) => {
                dispatch(setState("inventoryTableSelRow", selectedRows));
                dispatch(setState("inventoryPopUpOpen", true));

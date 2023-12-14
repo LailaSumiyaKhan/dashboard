@@ -12,6 +12,14 @@ const initialState = {
    inventoryTable: null,
    inventoryTableSelRow: [],
    popUpProduct: null,
+
+   category: "",
+   size: "",
+   color: "",
+   stock: 0,
+
+   msgOpen: false,
+   msg: ""
 }
 
 export const getHomeData = createAsyncThunk(
