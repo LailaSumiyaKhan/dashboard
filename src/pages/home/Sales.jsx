@@ -1,20 +1,22 @@
 import { Paper, Typography } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
-import LoadingScreen from "../../components/LoadingScreen";
 import Chart from "react-apexcharts";
-import { getLastSixMonthsSalesData } from "../../utils";
+import { getLast12Months } from "../../utils";
+import LoadingScreen from "../../components/LoadingScreen";
 
 export default function Sales() {
-   const homeData = useSelector((store) => store.app.homeData);
-   if (homeData === null) {
+   const { inventoryTable } = useSelector((store) => store.app);
+
+   if (inventoryTable === null) {
       return <LoadingScreen />;
    }
-   const data = getLastSixMonthsSalesData();
-   const { months, sales } = data;
+
+   const sales = inventoryTable.sellsEachMonth.slice();
+   const months = getLast12Months();
    const series = [
       {
-         name: "Sale ($)",
+         name: "Sale",
          data: [...sales],
       },
    ];
@@ -33,7 +35,7 @@ export default function Sales() {
          curve: "straight",
       },
       title: {
-         text: "Sales Last 6 Months",
+         text: "Sales Last 12 Months",
          align: "left",
       },
       labels: [...months],
@@ -50,9 +52,8 @@ export default function Sales() {
    return (
       <Paper
          elevation={0}
-         sx={{ p: 1, borderRadius: 2, textAlign: "center", width: 500 }}
+         sx={{ p: 1, borderRadius: 2, textAlign: "center", width: 550 }}
       >
-         {" "}
          <Typography variant="h5" gutterBottom sx={{ fontWeight: "bold" }}>
             Sales
          </Typography>{" "}

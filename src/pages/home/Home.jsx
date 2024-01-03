@@ -16,10 +16,11 @@ export default function Home() {
       if (!homeData) {
          dispatch(getHomeData());
       }
-      if (!inventoryTable) {
+      if (inventoryTable === null) {
          dispatch(getInventoryTable());
       }
    }, []);
+
    return (
       <>
          <LoadingScreen />

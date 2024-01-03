@@ -1,25 +1,26 @@
 import { Box, Paper, Typography } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
-import LoadingScreen from "../../components/LoadingScreen";
 import Chart from "react-apexcharts";
-import { getLastSixMonthsRevenueData } from "../../utils";
+import { getLast12Months } from "../../utils";
+import LoadingScreen from "../../components/LoadingScreen";
 
 export default function RevenueBreakdown() {
-   const homeData = useSelector((store) => store.app.homeData);
-   if (homeData === null) {
+   const { inventoryTable } = useSelector((store) => store.app);
+
+   if (inventoryTable === null) {
       return <LoadingScreen />;
    }
 
-   const data = getLastSixMonthsRevenueData();
-   const { months, revenue } = data;
+   const revenue = inventoryTable.revenueEachMonth.slice();
+   const months = getLast12Months();
 
    const options = {
       chart: {
          id: "basic-bar",
       },
       title: {
-         text: "Revenue Last 6 Months",
+         text: "Revenue Last 12 Months",
          align: "left",
       },
       plotOptions: {
@@ -34,7 +35,7 @@ export default function RevenueBreakdown() {
    };
    const series = [
       {
-         name: "Revenue",
+         name: "Revenue($)",
          data: [...revenue],
       },
    ];
@@ -48,7 +49,13 @@ export default function RevenueBreakdown() {
             Revenue
          </Typography>
          <Box>
-            <Chart options={options} series={series} type="bar" width="500" />
+            <Chart
+               options={options}
+               series={series}
+               type="bar"
+               width="500"
+               height="400"
+            />
          </Box>
       </Paper>
    );

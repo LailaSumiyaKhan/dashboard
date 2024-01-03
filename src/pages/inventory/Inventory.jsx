@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import LoadingScreen from "../../components/LoadingScreen";
 import { getInventoryTable, setState } from "../../appSlice";
 import PopUp from "./PopUp";
-import { getPopUpProduct } from "../../utils";
+import { generateInventoryTableData, getPopUpProduct } from "../../utils";
 import InventoryTabs from "./InventoryTabs";
 
 const columns = [
@@ -23,6 +23,8 @@ export default function Inventory() {
    const { inventoryTable, inventoryTableSelRow } = useSelector(
       (store) => store.app
    );
+
+   // generateInventoryTableData();
 
    useEffect(() => {
       if (!inventoryTable) {
