@@ -66,6 +66,21 @@ export function getLastSixMonthsSalesData() {
    return data;
 }
 
+export function getLast12Months() {
+   let months = [];
+   const currentMonth = new Date().getMonth();
+   const currentYear = new Date().getFullYear();
+
+   for (let i = 0; i < 12; i++) {
+      const month = monthNames[(currentMonth - i + 12) % 12];
+      const year = currentMonth - i < 0 ? currentYear - 1 : currentYear;
+
+      const dateString = `${month} ${year.toString().slice(2)}`;
+      months.push(dateString);
+   }
+   return months;
+}
+
 export function getLastSixMonthsOrdersData() {
    const months = [];
    const orders = [];
@@ -171,15 +186,31 @@ export function generateInventoryTableData() {
    const rows = [];
    let idCounter = 1;
    let total = 0;
+   let sellsEachMonth = new Array(12).fill(0);
+   let revenueEachMonth = new Array(12).fill(0);
 
    categories.forEach((category) => {
+      const revenue = Math.floor(Math.random() * (100 - 50 + 1)) + 50;
       sizes.forEach((size) => {
          const max = 500;
          const min = 150;
          const price = Math.floor(Math.random() * (max - min + 1)) + min;
+
          colors.forEach((color) => {
             const stock = Math.floor(Math.random() * 50);
-            const sells = generateNMonthsSells(stock);
+            const sells = generateNMonthsSells(stock / 2);
+
+            // Each index of sells array is sells of one month
+            // Adding those sells to get total sells of one month
+            for (let i = 0; i < sells.length; ++i) {
+               sellsEachMonth[i] += sells[i];
+            }
+
+            // Calculate revenue for each category and each month
+            for (let i = 0; i < sells.length; ++i) {
+               revenueEachMonth[i] += sells[i] * revenue;
+            }
+
             const totalSells = sells.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
             total += stock;
             let status = "OK"
@@ -194,13 +225,13 @@ export function generateInventoryTableData() {
                stock,
                status,
                sells,
-               totalSells
+               totalSells,
             };
             rows.push(item);
          });
       });
    });
-   downloadObjectAsJson({ total, rows }, "inventoryTable")
+   downloadObjectAsJson({ total, sellsEachMonth, revenueEachMonth, rows }, "inventoryTable")
    return { total, rows };
 }
 
