@@ -3,7 +3,6 @@ import Box from "@mui/material/Box";
 import Snackbar from "@mui/material/Snackbar";
 import { useDispatch, useSelector } from "react-redux";
 import { setState } from "../../appSlice";
-import { Alert, AlertTitle } from "@mui/material";
 
 export default function Message() {
    const dispatch = useDispatch();

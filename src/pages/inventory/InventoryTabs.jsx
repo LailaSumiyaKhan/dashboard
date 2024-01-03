@@ -60,12 +60,12 @@ export default function InventoryTabs() {
                <Tab
                   label="Add"
                   {...a11yProps(0)}
-                  sx={{ textTransform: "capitalize" }}
+                  sx={{ textTransform: "capitalize", fontWeight: "bold" }}
                />
                <Tab
                   label="Remove"
                   {...a11yProps(1)}
-                  sx={{ textTransform: "capitalize" }}
+                  sx={{ textTransform: "capitalize", fontWeight: "bold" }}
                />
             </Tabs>
          </Box>
