@@ -174,6 +174,9 @@ export function generateInventoryTableData() {
 
    categories.forEach((category) => {
       sizes.forEach((size) => {
+         const max = 500;
+         const min = 150;
+         const price = Math.floor(Math.random() * (max - min + 1)) + min;
          colors.forEach((color) => {
             const stock = Math.floor(Math.random() * 50);
             const sells = generateNMonthsSells(stock);
@@ -187,6 +190,7 @@ export function generateInventoryTableData() {
                category,
                size,
                color,
+               price,
                stock,
                status,
                sells,
@@ -198,10 +202,6 @@ export function generateInventoryTableData() {
    });
    downloadObjectAsJson({ total, rows }, "inventoryTable")
    return { total, rows };
-}
-
-export function convertInventoryDataForTable(inventoryData) {
-
 }
 
 export function downloadObjectAsJson(obj, filename) {

@@ -13,6 +13,7 @@ const columns = [
    { field: "category", headerName: "Category", width: 150 },
    { field: "size", headerName: "Size", width: 150 },
    { field: "color", headerName: "Color", width: 150 },
+   { field: "price", headerName: "Price", width: 150 },
    { field: "stock", headerName: "Stock", width: 150 },
    { field: "status", headerName: "Status", width: 150 },
 ];
