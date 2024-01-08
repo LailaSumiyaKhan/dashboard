@@ -2,7 +2,7 @@ import Layout from "./components/Layout";
 import Home from "./pages/home/Home";
 import Login from "./pages/Login";
 import Inventory from "./pages/inventory/Inventory";
-import Orders from "./pages/Orders";
+import Orders from "./pages/orders/Orders";
 import Analytics from "./pages/Analytics";
 import Customers from "./pages/Customers";
 import Settings from "./pages/Settings";
