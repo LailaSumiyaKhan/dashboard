@@ -1,17 +1,17 @@
-import { Divider, Paper, Typography } from "@mui/material";
+import { Paper, Typography } from "@mui/material";
 import React from "react";
 
-export default function Total({ total }) {
+export default function Status({ number, label }) {
    return (
-      <Paper elevation={0} sx={{ width: "95%" }}>
+      <Paper elevation={0} sx={{ ml: 2 }}>
          <Typography
             variant="h3"
             sx={{ fontWeight: "bold", color: "blue.dark" }}
          >
-            {total}
+            {number}
          </Typography>
          <Typography variant="body1" sx={{ fontWeight: "bold" }}>
-            T-Shirts Available
+            {label}
          </Typography>
       </Paper>
    );
