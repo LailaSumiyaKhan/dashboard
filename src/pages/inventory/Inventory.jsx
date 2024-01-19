@@ -1,13 +1,13 @@
 import { Box, Typography } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import React, { useEffect } from "react";
-import Total from "./Total";
 import { useDispatch, useSelector } from "react-redux";
 import LoadingScreen from "../../components/LoadingScreen";
 import { getInventoryTable, setState } from "../../appSlice";
 import PopUp from "./PopUp";
 import { generateInventoryTableData, getPopUpProduct } from "../../utils";
 import InventoryTabs from "./InventoryTabs";
+import Status from "../../components/Status";
 
 const columns = [
    { field: "category", headerName: "Category", width: 150 },
@@ -51,7 +51,7 @@ export default function Inventory() {
       <Box sx={{ width: "100%" }}>
          <PopUp />
 
-         <Total total={total} />
+         <Status number={total} label={"T-Shirts Available"} />
 
          <InventoryTabs />
 
