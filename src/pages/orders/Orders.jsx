@@ -2,6 +2,7 @@ import { Box, Typography } from "@mui/material";
 import React from "react";
 import Status from "../../components/Status";
 import OrdersTable from "./OrdersTable";
+import OrderDetails from "./OrderDetails";
 
 const completedOrders = 127;
 const completedLabel = "Completed";
@@ -20,6 +21,8 @@ export default function Orders() {
          <Typography variant="h5" sx={{ mt: 3, fontWeight: "bold" }}>
             Orders
          </Typography>
+
+         <OrderDetails />
 
          <OrdersTable />
       </Box>

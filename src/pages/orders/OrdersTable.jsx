@@ -1,6 +1,8 @@
 import { Box } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setState } from "../../appSlice";
 
 const columns = [
    { field: "id", headerName: "ID", width: 100 },
@@ -11,6 +13,9 @@ const columns = [
 ];
 
 export default function OrdersTable() {
+   const dispatch = useDispatch();
+   const { orderDetail, selectedOrderIDs } = useSelector((store) => store.app);
+
    return (
       <Box>
          <DataGrid
@@ -23,6 +28,14 @@ export default function OrdersTable() {
                   },
                },
             }}
+            onRowSelectionModelChange={(selectedRows) => {
+               const id = selectedRows[0];
+               const order = rows.find((item) => item.id === id);
+               dispatch(setState("orderDetail", order));
+               dispatch(setState("orderPopupOpen", true));
+               dispatch(setState("selectedOrderIDs", selectedRows));
+            }}
+            rowSelectionModel={selectedOrderIDs}
             pageSizeOptions={[10, 20, 30, 50]}
             sx={{
                mt: 1,

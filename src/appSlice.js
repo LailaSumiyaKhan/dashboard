@@ -19,7 +19,11 @@ const initialState = {
    stock: 0,
 
    msgOpen: false,
-   msg: ""
+   msg: "",
+
+   orderPopupOpen: false,
+   orderDetail: null,
+   selectedOrderIDs: [],
 }
 
 export const getHomeData = createAsyncThunk(
