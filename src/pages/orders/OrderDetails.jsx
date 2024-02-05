@@ -3,6 +3,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setState } from "../../appSlice";
 import LabelAndValue from "./LabelAndValue";
+import OrderDetailsTable from "./OrderDetailsTable";
 
 const style = {
    position: "absolute",
@@ -24,7 +25,7 @@ export default function OrderDetails() {
       return <></>;
    }
 
-   const { customerName, orderDate, status, total } = orderDetail;
+   const { customerName, orderDate, status } = orderDetail;
 
    function closePopUp() {
       dispatch(setState("orderPopupOpen", false));
@@ -42,7 +43,8 @@ export default function OrderDetails() {
                <LabelAndValue label={"Customer"} value={customerName} />
                <LabelAndValue label={"Order Date"} value={orderDate} />
                <LabelAndValue label={"Order Status"} value={status} />
-               <LabelAndValue label={"Total Amount"} value={total} />
+               <OrderDetailsTable />
+               <LabelAndValue label={"Total Amount"} value={1235} />
             </Box>
          </Modal>
       </Box>
