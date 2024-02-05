@@ -2,6 +2,7 @@ import { Box, Divider, Modal, Typography } from "@mui/material";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setState } from "../../appSlice";
+import LabelAndValue from "./LabelAndValue";
 
 const style = {
    position: "absolute",
@@ -38,13 +39,10 @@ export default function OrderDetails() {
                </Typography>
                <Divider sx={{ mb: 1 }} />
 
-               <Typography
-                  variant="subtitle1"
-                  sx={{ fontWeight: "bold", mr: 1 }}
-               >
-                  Customer:
-               </Typography>
-               <Typography variant="subtitle1">{customerName}</Typography>
+               <LabelAndValue label={"Customer"} value={customerName} />
+               <LabelAndValue label={"Order Date"} value={orderDate} />
+               <LabelAndValue label={"Order Status"} value={status} />
+               <LabelAndValue label={"Total Amount"} value={total} />
             </Box>
          </Modal>
       </Box>
