@@ -4,7 +4,7 @@ import Login from "./pages/Login";
 import Inventory from "./pages/inventory/Inventory";
 import Orders from "./pages/orders/Orders";
 import Analytics from "./pages/Analytics";
-import Customers from "./pages/Customers";
+import Customers from "./pages/customers/Customers";
 import Settings from "./pages/Settings";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";

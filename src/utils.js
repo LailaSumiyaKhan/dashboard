@@ -33,6 +33,7 @@ export const colors = {
 export const urls = {
    homeData: "data/homeData.json",
    inventory: "data/inventoryTable.json",
+   customers: "data/customers.json",
 }
 
 export const categories = ["Men", "Women", "Children", "Sports", "Graphic"];

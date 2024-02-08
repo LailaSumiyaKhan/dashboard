@@ -24,6 +24,8 @@ const initialState = {
    orderPopupOpen: false,
    orderDetail: null,
    selectedOrderIDs: [],
+
+   customersTable: null,
 }
 
 export const getHomeData = createAsyncThunk(
@@ -48,6 +50,22 @@ export const getInventoryTable = createAsyncThunk(
          // Fake delay
          await new Promise((resolve) => setTimeout(resolve, 700));
          const response = await fetch(urls.inventory);
+         const data = await response.json();
+         return data;
+      } catch (error) {
+         console.error(error);
+      }
+   }
+);
+
+
+export const getCustomersTable = createAsyncThunk(
+   "customer/getCustomersTable",
+   async (obj, thunkAPI) => {
+      try {
+         // Fake delay
+         await new Promise((resolve) => setTimeout(resolve, 700));
+         const response = await fetch(urls.customers);
          const data = await response.json();
          return data;
       } catch (error) {
@@ -96,6 +114,18 @@ export const appSlice = createSlice({
          .addCase(getInventoryTable.rejected, (state, action) => {
             state.isLoading = false;
             console.error(`getInventoryTable - ${action.error.message}`)
+         })
+
+         .addCase(getCustomersTable.pending, (state, action) => {
+            state.isLoading = true;
+         })
+         .addCase(getCustomersTable.fulfilled, (state, action) => {
+            state.customersTable = action.payload;
+            state.isLoading = false;
+         })
+         .addCase(getCustomersTable.rejected, (state, action) => {
+            state.isLoading = false;
+            console.error(`getCustomersTable - ${action.error.message}`)
          })
    }
 });
