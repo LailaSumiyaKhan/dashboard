@@ -30,10 +30,12 @@ export const colors = {
    lightSkyBlue: '#87CEFA'
 }
 
+const api = process.env.REACT_APP_API;
+
 export const urls = {
    homeData: "data/homeData.json",
    inventory: "data/inventoryTable.json",
-   customers: "data/customers.json",
+   customers: `${api}customer`,
 }
 
 export const categories = ["Men", "Women", "Children", "Sports", "Graphic"];
