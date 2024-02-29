@@ -34,8 +34,8 @@ const api = process.env.REACT_APP_API;
 
 export const urls = {
    homeData: "data/homeData.json",
-   inventory: "data/inventoryTable.json",
-   customers: `${api}customer`,
+   inventory: `${api}Product`,
+   customers: `${api}Customer`,
 }
 
 export const categories = ["Men", "Women", "Children", "Sports", "Graphic"];
