@@ -63,8 +63,6 @@ export const getCustomersTable = createAsyncThunk(
    "customer/getCustomersTable",
    async (obj, thunkAPI) => {
       try {
-         // Fake delay
-         await new Promise((resolve) => setTimeout(resolve, 700));
          const response = await fetch(urls.customers);
          const data = await response.json();
          return data;
@@ -120,7 +118,7 @@ export const appSlice = createSlice({
             state.isLoading = true;
          })
          .addCase(getCustomersTable.fulfilled, (state, action) => {
-            state.customersTable = action.payload;
+            state.customersTable = action.payload.data;
             state.isLoading = false;
          })
          .addCase(getCustomersTable.rejected, (state, action) => {
