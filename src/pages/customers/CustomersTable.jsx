@@ -10,12 +10,22 @@ export default function CustomersTable() {
    const { customersTable } = states;
 
    const columns = [
-      { field: "id", headerName: "ID", width: colWidth },
+      { field: "id", headerName: "ID", width: 80 },
       { field: "name", headerName: "Name", width: colWidth },
       { field: "email", headerName: "Email", width: 200 },
       { field: "phone", headerName: "Phone", width: colWidth },
       { field: "address", headerName: "Address", width: 300 },
-      { field: "type", headerName: "Type", width: colWidth },
+      {
+         field: "type",
+         headerName: "Type",
+         width: colWidth,
+         valueGetter: (params) => {
+            if (params.row.type === 0) {
+               return "Active";
+            }
+            return "Inactive";
+         },
+      },
    ];
 
    return (
