@@ -10,6 +10,7 @@ const initialState = {
 
    homeData: null,
    inventoryTable: null,
+   totalStock: 0,
    inventoryTableSelRow: [],
    popUpProduct: null,
 
@@ -47,9 +48,20 @@ export const getInventoryTable = createAsyncThunk(
    "inventory/getInventoryTable",
    async (obj, thunkAPI) => {
       try {
-         // Fake delay
-         await new Promise((resolve) => setTimeout(resolve, 700));
          const response = await fetch(urls.inventory);
+         const data = await response.json();
+         return data;
+      } catch (error) {
+         console.error(error);
+      }
+   }
+);
+
+export const getTotalStock = createAsyncThunk(
+   "inventory/getTotalStock",
+   async (obj, thunkAPI) => {
+      try {
+         const response = await fetch(urls.totalStock);
          const data = await response.json();
          return data;
       } catch (error) {
@@ -106,12 +118,25 @@ export const appSlice = createSlice({
             state.isLoading = true;
          })
          .addCase(getInventoryTable.fulfilled, (state, action) => {
-            state.inventoryTable = action.payload;
+            state.inventoryTable = action.payload.data;
             state.isLoading = false;
          })
          .addCase(getInventoryTable.rejected, (state, action) => {
             state.isLoading = false;
             console.error(`getInventoryTable - ${action.error.message}`)
+         })
+
+         .addCase(getTotalStock.pending, (state, action) => {
+            state.isLoading = true;
+         })
+         .addCase(getTotalStock.fulfilled, (state, action) => {
+            console.log(action.payload);
+            state.totalStock = action.payload.data;
+            state.isLoading = false;
+         })
+         .addCase(getTotalStock.rejected, (state, action) => {
+            state.isLoading = false;
+            console.error(`getTotalStock - ${action.error.message}`)
          })
 
          .addCase(getCustomersTable.pending, (state, action) => {
