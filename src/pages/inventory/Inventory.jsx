@@ -73,8 +73,6 @@ export default function Inventory() {
       (store) => store.app
    );
 
-   // generateInventoryTableData();
-
    useEffect(() => {
       if (inventoryTable === null) {
          dispatch(getInventoryTable());

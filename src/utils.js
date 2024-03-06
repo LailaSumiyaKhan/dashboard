@@ -292,6 +292,7 @@ export function getLastNMonths(n) {
 
 export function prepareInventoryRows(data) {
    const rows = data.map((item, index) => {
+      console.log(item, index);
       return {
          id: index,
          ...item,

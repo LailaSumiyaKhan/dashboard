@@ -150,7 +150,6 @@ export const appSlice = createSlice({
             state.isLoading = true;
          })
          .addCase(getTotalStock.fulfilled, (state, action) => {
-            console.log(action.payload);
             state.totalStock = action.payload.data;
             state.isLoading = false;
          })
@@ -176,8 +175,6 @@ export const appSlice = createSlice({
          })
          .addCase(updateStock.fulfilled, (state, action) => {
             state.isLoading = false;
-            state.msg = action.payload.message;
-            state.msgOpen = true;
          })
          .addCase(updateStock.rejected, (state, action) => {
             state.isLoading = false;

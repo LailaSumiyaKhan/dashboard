@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getHomeData, getInventoryTable } from "../../appSlice";
+import { getHomeData, getInventoryTable, getTotalStock } from "../../appSlice";
 import LoadingScreen from "../../components/LoadingScreen";
 import { Grid } from "@mui/material";
 import Sales from "./Sales";
@@ -16,9 +16,10 @@ export default function Home() {
       if (!homeData) {
          dispatch(getHomeData());
       }
-      // if (inventoryTable === null) {
-      //    dispatch(getInventoryTable());
-      // }
+      if (inventoryTable === null) {
+         dispatch(getInventoryTable());
+         dispatch(getTotalStock());
+      }
    }, []);
 
    return (
@@ -30,7 +31,12 @@ export default function Home() {
             <Grid item>
                <Orders />
             </Grid>
-            <Grid item>{/* <InventoryStatus /> */}</Grid>
+            {inventoryTable !== null ? (
+               <Grid item>
+                  <InventoryStatus />
+               </Grid>
+            ) : null}
+
             <Grid item>{/* <RevenueBreakdown /> */}</Grid>
          </Grid>
       </>
