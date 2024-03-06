@@ -3,55 +3,105 @@ import { DataGrid } from "@mui/x-data-grid";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LoadingScreen from "../../components/LoadingScreen";
-import { getInventoryTable, setState } from "../../appSlice";
+import { getInventoryTable, getTotalStock, setState } from "../../appSlice";
 import PopUp from "./PopUp";
-import { generateInventoryTableData, getPopUpProduct } from "../../utils";
+import {
+   availableColors,
+   categories,
+   getPopUpProduct,
+   sizes,
+} from "../../utils";
 import InventoryTabs from "./InventoryTabs";
 import Status from "../../components/Status";
 
 const columns = [
-   { field: "category", headerName: "Category", width: 150 },
-   { field: "size", headerName: "Size", width: 150 },
-   { field: "color", headerName: "Color", width: 150 },
+   { field: "name", headerName: "Name", width: 150 },
+   {
+      field: "category",
+      headerName: "Category",
+      width: 150,
+      valueGetter: (params) => {
+         let type = categories[params.row.category];
+         return type;
+      },
+   },
+   {
+      field: "size",
+      headerName: "Size",
+      width: 150,
+      valueGetter: (params) => {
+         let s = sizes[params.row.size];
+         return s;
+      },
+   },
+   {
+      field: "color",
+      headerName: "Color",
+      width: 150,
+      valueGetter: (params) => {
+         let c = availableColors[params.row.color];
+         return c;
+      },
+   },
    { field: "price", headerName: "Price", width: 150 },
    { field: "stock", headerName: "Stock", width: 150 },
-   { field: "status", headerName: "Status", width: 150 },
+   {
+      field: "status",
+      headerName: "Status",
+      width: 150,
+      valueGetter: (params) => {
+         let s = "";
+         switch (params.row.status) {
+            default:
+               s = "Low";
+               break;
+            case 1:
+               s = "Medium";
+               break;
+            case 2:
+               s = "Ok";
+               break;
+         }
+         return s;
+      },
+   },
 ];
 
 export default function Inventory() {
    const dispatch = useDispatch();
-   const { inventoryTable, inventoryTableSelRow } = useSelector(
+   const { totalStock, inventoryTable, inventoryTableSelRow } = useSelector(
       (store) => store.app
    );
 
    // generateInventoryTableData();
 
    useEffect(() => {
-      if (!inventoryTable) {
+      if (inventoryTable === null) {
          dispatch(getInventoryTable());
+         dispatch(getTotalStock());
       }
    }, []);
 
    useEffect(() => {
-      if (inventoryTableSelRow.length > 0) {
-         const popUpProduct = getPopUpProduct(
-            inventoryTable.rows,
-            inventoryTableSelRow[0]
-         );
-         dispatch(setState("popUpProduct", popUpProduct));
-      }
+      // if (inventoryTableSelRow.length > 0) {
+      //    const popUpProduct = getPopUpProduct(
+      //       inventoryTable.rows,
+      //       inventoryTableSelRow[0]
+      //    );
+      //    dispatch(setState("popUpProduct", popUpProduct));
+      // }
    }, [inventoryTableSelRow]);
 
    if (!inventoryTable) {
       return <LoadingScreen />;
    }
-   const { total, rows } = inventoryTable;
+   // const { total, rows } = inventoryTable;
 
    return (
       <Box sx={{ width: "100%" }}>
          <PopUp />
 
-         <Status number={total} label={"T-Shirts Available"} />
+         <Status number={totalStock} label={"T-Shirts Available"} />
 
          <InventoryTabs />
 
@@ -61,7 +111,7 @@ export default function Inventory() {
 
          <DataGrid
             columns={columns}
-            rows={rows}
+            rows={inventoryTable}
             initialState={{
                pagination: {
                   paginationModel: {

@@ -11,7 +11,12 @@ import {
 import React from "react";
 import { availableColors, categories, sizes } from "../../utils";
 import { useDispatch, useSelector } from "react-redux";
-import { setState } from "../../appSlice";
+import {
+   getInventoryTable,
+   getTotalStock,
+   setState,
+   updateStock,
+} from "../../appSlice";
 import Message from "./Message";
 
 export default function Remove() {
@@ -40,7 +45,32 @@ export default function Remove() {
    }
 
    function remove() {
-      showMessage("Removed successfully!");
+      let cats = [category];
+      let allSizes = [size];
+      let allColors = [color];
+      if (category === 0) {
+         cats = [1, 2, 3, 4, 5];
+      }
+      if (size === 0) {
+         allSizes = [1, 2, 3, 4, 5];
+      }
+      if (color === 0) {
+         allColors = [1, 2, 3, 4, 5, 6];
+      }
+      const isAdd = false;
+
+      const obj = {
+         categories: cats,
+         sizes: allSizes,
+         colors: allColors,
+         stock: Number(stock),
+         isAdd,
+      };
+
+      console.log("Inventory_Add", obj);
+      dispatch(updateStock(obj))
+         .then(() => dispatch(getInventoryTable()))
+         .then(() => dispatch(getTotalStock()));
    }
 
    function showMessage(msg) {
@@ -61,10 +91,9 @@ export default function Remove() {
                      onChange={setCategory}
                      label="Category"
                   >
-                     <MenuItem value={"All"}>{"All"}</MenuItem>
                      {categories.map((category, index) => {
                         return (
-                           <MenuItem key={index} value={category}>
+                           <MenuItem key={index} value={index}>
                               {category}
                            </MenuItem>
                         );
@@ -77,10 +106,9 @@ export default function Remove() {
                <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
                   <InputLabel>Size</InputLabel>
                   <Select value={size} onChange={setSize} label="Size">
-                     <MenuItem value={"All"}>{"All"}</MenuItem>
                      {sizes.map((size, index) => {
                         return (
-                           <MenuItem key={index} value={size}>
+                           <MenuItem key={index} value={index}>
                               {size}
                            </MenuItem>
                         );
@@ -93,10 +121,9 @@ export default function Remove() {
                <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
                   <InputLabel>Color</InputLabel>
                   <Select value={color} onChange={setColor} label="Color">
-                     <MenuItem value={"All"}>{"All"}</MenuItem>
                      {availableColors.map((color, index) => {
                         return (
-                           <MenuItem key={index} value={color}>
+                           <MenuItem key={index} value={index}>
                               {color}
                            </MenuItem>
                         );

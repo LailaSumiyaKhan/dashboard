@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { urls } from "./utils";
+import { prepareInventoryRows, urls } from "./utils";
 
 const initialState = {
    isLoading: false,
@@ -17,7 +17,7 @@ const initialState = {
    category: "",
    size: "",
    color: "",
-   stock: 0,
+   stock: "",
 
    msgOpen: false,
    msg: "",
@@ -62,6 +62,26 @@ export const getTotalStock = createAsyncThunk(
    async (obj, thunkAPI) => {
       try {
          const response = await fetch(urls.totalStock);
+         const data = await response.json();
+         return data;
+      } catch (error) {
+         console.error(error);
+      }
+   }
+);
+
+export const updateStock = createAsyncThunk(
+   "inventory/updateStock",
+   async (obj, thunkAPI) => {
+      try {
+         const response = await fetch(urls.updateStock, {
+            method: "POST",
+            headers: {
+               "Content-Type": "application/json",
+               Accept: "application/json"
+            },
+            body: JSON.stringify(obj)
+         });
          const data = await response.json();
          return data;
       } catch (error) {
@@ -118,7 +138,7 @@ export const appSlice = createSlice({
             state.isLoading = true;
          })
          .addCase(getInventoryTable.fulfilled, (state, action) => {
-            state.inventoryTable = action.payload.data;
+            state.inventoryTable = prepareInventoryRows(action.payload.data);
             state.isLoading = false;
          })
          .addCase(getInventoryTable.rejected, (state, action) => {
@@ -149,6 +169,19 @@ export const appSlice = createSlice({
          .addCase(getCustomersTable.rejected, (state, action) => {
             state.isLoading = false;
             console.error(`getCustomersTable - ${action.error.message}`)
+         })
+
+         .addCase(updateStock.pending, (state, action) => {
+            state.isLoading = true;
+         })
+         .addCase(updateStock.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.msg = action.payload.message;
+            state.msgOpen = true;
+         })
+         .addCase(updateStock.rejected, (state, action) => {
+            state.isLoading = false;
+            console.error(`updateStock - ${action.error.message}`)
          })
    }
 });

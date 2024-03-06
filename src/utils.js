@@ -1,3 +1,5 @@
+import { RouteSharp } from "@mui/icons-material";
+
 export const colors = {
    royalBlue: '#00539C',
    peach: '#EEA47F',
@@ -36,12 +38,13 @@ export const urls = {
    homeData: "data/homeData.json",
    inventory: `${api}Product`,
    totalStock: `${api}Product/totalstock`,
+   updateStock: `${api}Product/stockupdate`,
    customers: `${api}Customer`,
 }
 
-export const categories = ["Men", "Women", "Children", "Sports", "Graphic"];
-export const sizes = ["S", "M", "L", "XL", "XXL"];
-export const availableColors = ["Red", "Blue", "Yellow", "Black", "White"];
+export const categories = ["All", "Men", "Women", "Children", "Sports", "Graphic"];
+export const sizes = ["All", "S", "M", "L", "XL", "XXL"];
+export const availableColors = ["All", "Red", "Blue", "Green", "Yellow", "Black", "White"];
 
 const monthNames = [
    "Jan", "Feb", "Mar", "Apr", "May", "Jun",
@@ -287,4 +290,13 @@ export function getLastNMonths(n) {
    return result.reverse(); // Reverse the array to get the months in ascending order
 }
 
+export function prepareInventoryRows(data) {
+   const rows = data.map((item, index) => {
+      return {
+         id: index,
+         ...item,
+      };
+   });
+   return rows;
+}
 //https://webflow.com/blog/best-color-combinations

@@ -16,9 +16,9 @@ export default function Home() {
       if (!homeData) {
          dispatch(getHomeData());
       }
-      if (inventoryTable === null) {
-         dispatch(getInventoryTable());
-      }
+      // if (inventoryTable === null) {
+      //    dispatch(getInventoryTable());
+      // }
    }, []);
 
    return (
@@ -26,18 +26,12 @@ export default function Home() {
          <LoadingScreen />
 
          <Grid container justifyContent={"center"} columnGap={5} rowGap={5}>
-            <Grid item>
-               <Sales />
-            </Grid>
+            <Grid item>{/* <Sales /> */}</Grid>
             <Grid item>
                <Orders />
             </Grid>
-            <Grid item>
-               <InventoryStatus />
-            </Grid>
-            <Grid item>
-               <RevenueBreakdown />
-            </Grid>
+            <Grid item>{/* <InventoryStatus /> */}</Grid>
+            <Grid item>{/* <RevenueBreakdown /> */}</Grid>
          </Grid>
       </>
    );
